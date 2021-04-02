@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout,authenticate
 from django.contrib.auth.models import  User
-from forms import Loginform
+from forms import Loginform, Aerolineaform
+from .models import Aerolinea
 # Create your views here.
 def index(request):
     return render(request,'vuelos/index.html')
@@ -24,4 +25,15 @@ def login(request):
         else:
             context['error'] = 'Usuario no registrado'
             return render(request,'vuelos/login.html',context)
+
+def registrar_aerolinea(request):
+    form = Aerolineaform()
+    context = {
+            'form':form
+            }
+    if request.method == 'POST':
+        pass
+
+    else:
+        return render(request,'vuelos/registrarAero.html',context)
 

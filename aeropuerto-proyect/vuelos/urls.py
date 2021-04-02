@@ -6,7 +6,9 @@ from . import views
 app_name = 'vuelos'
 urlpatterns = [
     path('', views.index, name='index'),
-    path('login', views.login, name='login')
+    path('login', views.login, name='login'),
+    path('registrar-aerolinea', views.registrar_aerolinea, name='registrar-aerolinea'),
+
 ]
 
 
