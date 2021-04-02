@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout,authenticate
 from django.contrib.auth.models import  User
+from forms import Loginform, Aerolineaform, RegistroClienteform 
+from .models import Aerolinea
 from django.http import  HttpResponse
 from forms import Loginform, Aerolineaform, Vueloform
 from .models import Aerolinea, Vuelo
@@ -12,6 +14,8 @@ def index(request):
 
 def vuelo(request):
     return render(request,'vuelos/vuelo.html')
+
+
 
 def registrar_aerolinea(request):
     form = Aerolineaform()
