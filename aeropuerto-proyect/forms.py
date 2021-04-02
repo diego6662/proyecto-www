@@ -1,8 +1,12 @@
 from django import forms
+<<<<<<< HEAD
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+=======
+from vuelos.models import Aerolinea
+>>>>>>> e2fb96dda806c678a686d96d34800b7dfac6ed0b
 
 class Loginform(forms.Form):
     usuario = forms.CharField(max_length=20,label='Nombre de usuario')
@@ -23,7 +27,7 @@ class Aerolineaform(forms.Form):
 
 class Vueloform(forms.Form):
     id_vuelo = forms.CharField(max_length=30, label='Codigo del vuelo')
-    id_aerolinea = forms.CharField(max_length=30, label='Codigo de la aerolinea')
+    id_aerolinea = forms.ModelChoiceField(Aerolinea.objects.all())
     costo = forms.FloatField(label='Precio')
 
 

@@ -125,19 +125,15 @@ header .navbar-default {
 }
 
 header .navbar-default .navbar-header {
-	z-index: 1030;
-	position: relative;
 	background: #fff;
 }
 
+.navbar-header img.scale-down{
+	object-fit: scale-down;
+}
 /*== Logo ==*/
 
 .navbar-brand {
-	float: left;
-	padding: 21px 15px;
-	font-size: 18px;
-	line-height: 20px;
-	height: 66px;
 	border-right: 1px solid #e8e8e8;
 }
 
@@ -151,7 +147,7 @@ header .navbar-default .navbar-header {
 .left-rs {}
 
 .navbar-brand>img {
-	width: 90px;
+	width: 20%;
 }
 
 .web-sh.navbar-form input {
@@ -179,7 +175,7 @@ header .navbar-default .navbar-header {
 
 .web-sh.navbar-form input::-moz-placeholder {
 	/* Firefox 19+ */
-	color #474747;
+	color: #474747;
 	opacity: 1;
 }
 
@@ -280,7 +276,7 @@ header .navbar-default .navbar-header {
 
 .top-nav ul li a {
 	color: #fff;
-	font-family: ;
+	font-family: sans-serif;
 	font-size: 14px;
 	font-weight: 400;
 }
