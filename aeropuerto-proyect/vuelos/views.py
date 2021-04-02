@@ -8,6 +8,7 @@ from django.http import  HttpResponse
 from forms import Loginform, Aerolineaform, Vueloform
 from .models import Aerolinea, Vuelo
 # Create your views here.
+
 def index(request):
     return render(request,'vuelos/index.html')
 
