@@ -1,13 +1,52 @@
 {% extends 'vuelos/base.html' %}
-
+<title>Registrar vuelo</title>
+{% block nav %}
+   <li><a href="#">Iniciar Sesión</a></li>
+   <li><a class="custom-b" href="#">Registrarse</a></li>
+{% endblock %}
 {% block content %}
-<div class='text-center'>
-  <h3>Registrar vuelo</h3>
-  <form method='POST'>
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type='submit' class='btn btn-primary'>Registrar</button>
-  </form>
+<br>
+
+<div class="container mt-5 mb-5" >
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6" >
+        <div class="card px-5 py-5">
+          <div class='text-left'>
+            <br>
+            <h1> Registrar vuelo</h1>
+            <br>
+            <form type='POST'>
+              {% csrf_token %}
+              <br>
+              <label for="id_id_vuelo" class="form-check-label"> Código de vuelo: </label>
+              <br>
+              <input type="text" name="id_vuelo" maxlength="30" required="" id="id_id_vuelo" class="form-control">
+              <br>
+              <label for="id_id_aerolinea" class="form-check-label"> Aerolinea: </label>
+                
+              <select class="form-control select2">
+                <option value="" selected="">---------</option>
+              </select>
+
+              <br>
+              <label for="id_costo" class="form-check-label"> Precio: </label>
+              <br>
+              <input type="text" name="id_costo" maxlength="30" required="" id="id_costo" class="form-control">
+              <br>
+              <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Registrar</button>
+            </form>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<span>
+<br>
+
+
+
+
+
+
 {% endblock %}
