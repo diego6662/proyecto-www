@@ -3416,8 +3416,8 @@ html .ui-button.ui-state-disabled:active {
 .card {
     border: none;
     padding: 20px;
-    background-color: #1c1e21;
-    color: #fff
+    background-color: #fff;
+    color: #1c1e21
 }
 
 .circle {
@@ -3447,15 +3447,15 @@ html .ui-button.ui-state-disabled:active {
 
 .form-control {
     height: 50px;
-    background-color: #1c1e21;
+    background-color: #fff;
     text-indent: 24px;
     font-size: 15px
 }
 
 .form-control:focus {
-    background-color: #25272a;
+    background-color: #fff;
     box-shadow: none;
-    color: #fff;
+    color: #000;
     border-color: #4f63e7
 }
 
