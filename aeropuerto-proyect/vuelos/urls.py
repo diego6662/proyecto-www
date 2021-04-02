@@ -7,6 +7,7 @@ app_name = 'vuelos'
 urlpatterns = [
     path('', views.index, name='index'),
     path('login', views.login, name='login'),
+    path('signup/', views.registrar_usuario, name='signup'),
     path('registrar-aerolinea', views.registrar_aerolinea, name='registrar-aerolinea'),
 
 ]

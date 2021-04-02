@@ -15,13 +15,16 @@
           <div class="form-input">
             <form method="post">
               {% csrf_token %}
-              <label for="id_usuario" class="form-check-label"> Nombre de usuario: </label>
-              <input type="text" name="usuario" maxlength="20" required="" id="id_usuario" class="form-control">
-
+              <!--{{form}}-->
+              <label for="id_cc">Identificacion:</label><input type="number" name="cc" required="" id="id_cc">
               <br>
-              <label for="id_contrasena" class="form-check-label">Contraseña:</label>
-              <input type="password" name="contrasena" required="" id="id_contrasena" class="form-control">
-
+              <label for="id_username">Username:</label><input type="text" name="username" maxlength="20" required="" id="id_username">
+              <br>
+              <label for="id_email">Email:</label><input type="email" name="email" maxlength="30" required="" id="id_email">
+              <br>
+              <label for="id_password1">Contraseña:</label><input type="password" name="password1" required="" id="id_password1">
+              <br>
+              <label for="id_password2">Confirmar Contraseña:</label><input type="password" name="password2" required="" id="id_password2">
               <br>
               <button class="btn btn-primary mr-4 signup" type="submit">Iniciar Sesión</button>
             </form>

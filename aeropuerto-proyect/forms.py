@@ -1,10 +1,21 @@
 from django import forms
-a = 1
+
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+
 class Loginform(forms.Form):
     usuario = forms.CharField(max_length=20,label='Nombre de usuario')
     contrasena = forms.CharField(widget=forms.PasswordInput(),
             label='Contraseña')
 
+
+class RegistroClienteform(forms.Form):
+    cc = forms.IntegerField(required=True,label='Identificacion')
+    username = forms.CharField(max_length=20,required=True )
+    email = forms.EmailField(max_length=30,required=True ,label='Email')
+    password1 = forms.CharField(widget=forms.PasswordInput(),label="Contraseña")
+    password2 = forms.CharField(widget=forms.PasswordInput(),label="Confirmar Contraseña")
 
 class Aerolineaform(forms.Form):
     aerolinea = forms.CharField(max_length=20, label='Nombre aerolinea')
@@ -23,3 +34,5 @@ class Escalaform(forms.Form):
     fecha_salida = forms.DateField(label='Fecha de salida')
     fecha_llegada = forms.DateField(label='Fecha de llegada')
     requisitos = forms.CharField(widget=forms.Textarea, label='Requisitos')
+
+
