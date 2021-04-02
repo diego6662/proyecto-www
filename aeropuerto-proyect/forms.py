@@ -1,5 +1,6 @@
 from django import forms
-a = 1
+from vuelos.models import Aerolinea
+
 class Loginform(forms.Form):
     usuario = forms.CharField(max_length=20,label='Nombre de usuario')
     contrasena = forms.CharField(widget=forms.PasswordInput(),
@@ -12,7 +13,7 @@ class Aerolineaform(forms.Form):
 
 class Vueloform(forms.Form):
     id_vuelo = forms.CharField(max_length=30, label='Codigo del vuelo')
-    id_aerolinea = forms.CharField(max_length=30, label='Codigo de la aerolinea')
+    id_aerolinea = forms.ModelChoiceField(Aerolinea.objects.all())
     costo = forms.FloatField(label='Precio')
 
 
