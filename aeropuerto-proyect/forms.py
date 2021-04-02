@@ -18,6 +18,27 @@ class RegistroClienteform(forms.Form):
     password1 = forms.CharField(widget=forms.PasswordInput(),label="Contraseña")
     password2 = forms.CharField(widget=forms.PasswordInput(),label="Confirmar Contraseña")
 
+    def clean(self):
+        cd = self.get.cleaned_data
+
+        psswrd1 = cd.get("password1")
+        psswrd2 = cd.get("password2")
+        #username = cd.get("username")
+        cc = cd.get("cc")
+        number_same_users = User.objects.filter(username=cd.get('username')).count()
+
+        if  psswrd1 != psswrd2:
+            raise ValidationError("Las claves no coinciden")
+        elif int(cc) < 0 or len(cc) < 8:
+            raise ValidationError("La identificacion debe tener almenos 8 digitos")
+        elif number_same_users > 0: 
+            raise ValidationError("Ya existen ese nombre de usuario")
+        
+        return cd
+        
+
+
+
 class Aerolineaform(forms.Form):
     aerolinea = forms.CharField(max_length=20, label='Nombre aerolinea')
 
