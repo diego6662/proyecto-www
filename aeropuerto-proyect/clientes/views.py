@@ -2,8 +2,9 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout,authenticate
 from django.contrib.auth.models import  User
-from forms import Loginform, Aerolineaform, RegistroClienteform 
 from django.http import  HttpResponse
+from forms import Loginform, Aerolineaform, Vueloform
+#
 # Create your views here.
 def login(request):
     form = Loginform()
