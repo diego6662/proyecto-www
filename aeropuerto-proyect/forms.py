@@ -29,7 +29,7 @@ class Vueloform(forms.Form):
 
 
 class Escalaform(forms.Form):
-    id_vuelo = forms.CharField(max_length=30, label='Codigo del vuelo')
+    id_vuelo = forms.CharField(max_length=30, label='Codigo del vuelo',)
     postal_procedencia = forms.IntegerField(label='Codigo postal procedencia')
     postal_destino = forms.IntegerField(label='Codigo postal destino')
     fecha_salida = forms.DateField(label='Fecha de salida')
