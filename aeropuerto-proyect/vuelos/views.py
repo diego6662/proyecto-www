@@ -13,24 +13,6 @@ def index(request):
 def vuelo(request):
     return render(request,'vuelos/vuelo.html')
 
-def login(request):
-    form = Loginform()
-    context = {
-            'form':form
-            }
-    if request.method == 'GET':
-        return render(request,'vuelos/login.html',context)
-    else:
-        user = request.POST['usuario']
-        contrasena = request.POST['contrasena']
-        auth = authenticate(request,username=user,password=contrasena)
-        if auth:
-            auth_login(request,auth)
-            return redirect('/')
-        else:
-            context['error'] = 'Usuario no registrado'
-            return render(request,'vuelos/login.html',context)
-
 def registrar_aerolinea(request):
     form = Aerolineaform()
     context = {
