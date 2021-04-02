@@ -32,7 +32,10 @@ def registrar_aerolinea(request):
             'form':form
             }
     if request.method == 'POST':
-        pass
+        nombre = request.POST['aerolinea']
+        aerolinea = Aerolinea(nombre=nombre)
+        aerolinea.save()
+        return redirect('/')
 
     else:
         return render(request,'vuelos/registrarAero.html',context)

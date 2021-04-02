@@ -22,4 +22,3 @@ class Escala(models.Model):
     requicitos = models.TextField(null=False,blank=False)
 
 
-
