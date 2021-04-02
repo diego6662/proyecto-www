@@ -1,0 +1,13 @@
+{% extends 'vuelos/base.html' %}
+<title>Registrar Aerolinea</title>
+{% block content %}
+<div class='text-center'>
+  <h3>Resgistro aerolinea</h3>
+  <form type='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type='submit' class='btn-success'>Registrar</button>
+  </form>
+</div>
+
+{% endblock %}
