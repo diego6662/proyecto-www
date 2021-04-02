@@ -441,6 +441,9 @@ header .navbar-default .navbar-header {
 	background-image: url('../images/bg_main.png');
 	padding-bottom: 180px;
 	background-position: center center;
+	display: flex;
+	justify-content: center;
+
 }
 
 .find-box {
