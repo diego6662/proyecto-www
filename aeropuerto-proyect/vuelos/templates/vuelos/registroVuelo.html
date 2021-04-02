@@ -15,24 +15,26 @@
             <br>
             <h1> Registrar vuelo</h1>
             <br>
-            <form type='POST'>
+            <form method='POST'>
               {% csrf_token %}
               <br>
               <label for="id_id_vuelo" class="form-check-label"> Código de vuelo: </label>
-              <br>
-              <input type="text" name="id_vuelo" maxlength="30" required="" id="id_id_vuelo" class="form-control">
-              <br>
+              <!-- <input type="text" name="id_vuelo" maxlength="30" required="" id="id_id_vuelo" class="form-control"> -->
+	      {{form.id_vuelo}}
+	      <br>
               <label for="id_id_aerolinea" class="form-check-label"> Aerolinea: </label>
                 
-              <select class="form-control select2">
-                <option value="" selected="">---------</option>
-              </select>
-
-              <br>
+              <!-- <select class="form-control select2"> -->
+              <!--   <option value="" selected="">---------</option> -->
+              <!-- </select> -->
+	
+	      {{form.id_aerolinea}}
+	      <br>
               <label for="id_costo" class="form-check-label"> Precio: </label>
-              <br>
-              <input type="text" name="id_costo" maxlength="30" required="" id="id_costo" class="form-control">
-              <br>
+              
+              <!-- <input type="text" name="id_costo" maxlength="30" required="" id="id_costo" class="form-control"> -->
+	      {{form.costo}}
+	      <br>
               <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Registrar</button>
             </form>
           </div>

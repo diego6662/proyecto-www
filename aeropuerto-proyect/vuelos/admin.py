@@ -9,7 +9,7 @@ class VueloAdmin(admin.ModelAdmin):
     fields = ('id_vuelo','aerolinea','costo')
 
 class EscalaAdmin(admin.ModelAdmin):
-    fields = ('vuelo','nombre_procedencia','cod_procedencia','nombre_destino','cod_destino','fecha_salida','fecha_llegada','requicitos')
+    fields = ('vuelo','nombre_procedencia','cod_procedencia','nombre_destino','cod_destino','fecha_salida','fecha_llegada','requisitos')
 
 admin.site.register(Aerolinea,AerolineaAdmin)
 admin.site.register(Vuelo,VueloAdmin)

@@ -27,8 +27,8 @@ class Escala(models.Model):
     cod_destino = models.IntegerField(null=False,blank=False)
     fecha_salida = models.DateTimeField(null=False,blank=False)
     fecha_llegada = models.DateTimeField(null=False,blank=False)
-    requicitos = models.TextField(null=False,blank=False)
+    requisitos = models.TextField(null=False,blank=False)
 
     def __str__(self):
-        return str(self.vuelo) +"," +  str(self.nombre_procedencia) 
+        return f'{self.vuelo},{self.nombre_procedencia}' 
 

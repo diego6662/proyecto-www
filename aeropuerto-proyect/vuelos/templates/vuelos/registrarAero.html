@@ -15,12 +15,12 @@
             <br>
             <h1> Registrar Aerolinea</h1>
             <br>
-            <form type='POST'>
+            <form method='POST'>
               {% csrf_token %}
               <br>
               <label for="id_aerolinea" class="form-check-label"> Nombre de la nueva Aerolínea: </label>
-              <br>
-              <input type="text" name="aerolinea" maxlength="30" required="" id="id_aerolinea" class="form-control">
+              <!-- <input type="text" name="aerolinea" maxlength="30" required="" id="id_aerolinea" class="form-control"> -->
+	      {{form.aerolinea}}
               <br>
               <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Registrar</button>
             </form>

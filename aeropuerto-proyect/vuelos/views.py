@@ -6,7 +6,7 @@ from forms import Loginform, Aerolineaform, RegistroClienteform
 from .models import Aerolinea
 from django.http import  HttpResponse
 from forms import Loginform, Aerolineaform, Vueloform, Escalaform 
-from .models import Aerolinea, Vuelo
+from .models import Aerolinea, Vuelo, Escala
 # Create your views here.
 
 def index(request):
@@ -57,6 +57,18 @@ def registrar_escala(request,id):
             'form':form
             }
     if request.method == 'POST':
-        pass
+        vuelo = Vuelo.objects.get(pk = id)
+        fecha_salida = f"{request.POST['fecha_salida_year']}-{request.POST['fecha_salida_month']}-{request.POST['fecha_salida_day']}"
+        fecha_llegada = f"{request.POST['fecha_llegada_year']}-{request.POST['fecha_llegada_month']}-{request.POST['fecha_llegada_day']}"
+        escala = Escala(vuelo=vuelo,
+                nombre_procedencia=request.POST['procedencia'],
+                cod_procedencia=request.POST['postal_procedencia'],
+                nombre_destino=request.POST['destino'],
+                cod_destino=request.POST['postal_destino'],
+                fecha_salida=fecha_salida,
+                fecha_llegada=fecha_llegada,
+                requisitos=request.POST['requisitos'])
+        escala.save()
+        return redirect('vuelos:registrar-escala',id)
     else:
         return render(request,'vuelos/registroEscala.html',context)

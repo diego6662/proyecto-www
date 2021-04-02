@@ -50,10 +50,12 @@ class Vueloform(forms.Form):
 
 class Escalaform(forms.Form):
 #    id_vuelo = forms.CharField(max_length=30, label='Codigo del vuelo',)
+    procedencia = forms.CharField(max_length=30, label='Ciudad de procedencia')
     postal_procedencia = forms.IntegerField(label='Codigo postal procedencia')
+    destino = forms.CharField(max_length=30, label='Ciudad de destino')
     postal_destino = forms.IntegerField(label='Codigo postal destino')
-    fecha_salida = forms.DateField(label='Fecha de salida', widget = forms.SelectDateWidget(years=[2021],months={3:'Abril'},))
-    fecha_llegada = forms.DateField(label='Fecha de llegada', widget = forms.SelectDateWidget(years=[2021],months={3:'Abril'}))
+    fecha_salida = forms.DateField(label='Fecha de salida', widget = forms.SelectDateWidget(years=[2021],months={4:'Abril'},))
+    fecha_llegada = forms.DateField(label='Fecha de llegada', widget = forms.SelectDateWidget(years=[2021],months={4:'Abril'}))
     requisitos = forms.CharField(widget=forms.Textarea, label='Requisitos')
 
 
