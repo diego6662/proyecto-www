@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants as message_constants
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # PAQUETES
+    # MODULOS INTERNOS 
     'vuelos',
     'clientes',
 ]
@@ -105,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -124,3 +128,17 @@ STATIC_ROOT = os.path.join(BASE_DIR,STATIC_URL)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,MEDIA_URL)
 
+
+# cargar formularios con crispy
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+# MENSAJES DE LOS FLASH de booststrap 
+MESSAGE_TAGS = {
+    message_constants.DEBUG: 'debug',
+    message_constants.INFO: 'info',
+    message_constants.SUCCESS: 'success',
+    message_constants.WARNING: 'warning',
+    message_constants.ERROR: 'danger'
+
+}
