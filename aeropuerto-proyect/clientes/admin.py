@@ -9,5 +9,5 @@ class ReservaAdmin(admin.ModelAdmin):
     fields = ('cliente','vuelo')
 
 
-admin.site.register(Cliente,ClienteAdmin)
-admin.site.register(Reserva,ReservaAdmin)
+admin.site.register(Cliente)
+admin.site.register(Reserva)

@@ -4,12 +4,20 @@ from django.contrib.auth.models import User
 # MODELOS
 
 class Aerolinea(models.Model):
-    nombre = models.CharField(max_length=100) 
+    nombre = models.CharField(max_length=100,verbose_name="nombre")
+    
+    def __str__(self):
+        return nombre
+
 
 class Vuelo(models.Model):
-    id_vuelo = models.CharField(max_length=30,primary_key=True)
-    aerolinea = models.ForeignKey(Aerolinea,on_delete=models.CASCADE)
-    costo = models.FloatField(blank=False,null=False)
+    id_vuelo = models.CharField(max_length=30,primary_key=True, verbose_name="id_vuelo")
+    aerolinea = models.ForeignKey(Aerolinea,on_delete=models.CASCADE, verbose_name="aerolinea")
+    costo = models.FloatField(blank=False,null=False, verbose_name="costo")
+
+    def __str__(self):
+        return str(id_vuelo)
+
 
 class Escala(models.Model):
     vuelo = models.ForeignKey(Vuelo,on_delete=models.CASCADE)
@@ -21,5 +29,6 @@ class Escala(models.Model):
     fecha_llegada = models.DateTimeField(null=False,blank=False)
     requicitos = models.TextField(null=False,blank=False)
 
-
+    def __str__(self):
+        return str(vuelo) +"," +  str(nombre_procedencia) 
 
