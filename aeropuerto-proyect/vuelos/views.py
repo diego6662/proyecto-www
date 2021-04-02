@@ -51,7 +51,17 @@ def registrar_vuelo(request):
             'aero':aerolineas
             }
     if request.method == 'POST':
-                
+        id_vuelo = request.POST['id_vuelo']                
+        id_aero = int(request.POST['id_aerolinea'])
+        costo = float(request.POST['costo'])
+        aerolinea = Aerolinea.objects.get(pk = id_aero)
+        vuelo = Vuelo(id_vuelo=id_vuelo,aerolinea=aerolinea,costo=costo)
+        vuelo.save()
+        return redirect('vuelos:registrar-escala',id_vuelo)
     else:
         return render(request,'vuelos/registroVuelo.html',context)
 
+def registrar_escala(request,id):
+    a = {'id':id}
+    
+    return render(request,'vuelos/registroEscala.html',a)
