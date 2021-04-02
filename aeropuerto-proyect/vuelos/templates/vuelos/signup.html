@@ -1,0 +1,40 @@
+{% extends 'vuelos/base.html' %}
+
+{% load static %}
+<title> Iniciar Sesion </title>
+{% block nav %}
+   <li><a href="#">Iniciar Sesión</a></li>
+   <li><a class="custom-b" href="#">Registrarse</a></li>
+{% endblock %}
+{% block content %}
+<br>
+<div class="container mt-5 mb-5" >
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6" >
+        <div class="card px-5 py-5">
+          <div class="form-input">
+            <form method="post">
+              {% csrf_token %}
+              <label for="id_usuario" class="form-check-label"> Nombre de usuario: </label>
+              <input type="text" name="usuario" maxlength="20" required="" id="id_usuario" class="form-control">
+
+              <br>
+              <label for="id_contrasena" class="form-check-label">Contraseña:</label>
+              <input type="password" name="contrasena" required="" id="id_contrasena" class="form-control">
+
+              <br>
+              <button class="btn btn-primary mr-4 signup" type="submit">Iniciar Sesión</button>
+            </form>
+            {% if error != None %}
+            <br>
+            <h1>{{error}}</h1>
+            {% endif %}
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}
