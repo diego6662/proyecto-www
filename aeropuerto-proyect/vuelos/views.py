@@ -8,6 +8,9 @@ from .models import Aerolinea, Vuelo
 def index(request):
     return render(request,'vuelos/index.html')
 
+def vuelo(request):
+    return render(request,'vuelos/vuelo.html')
+
 def login(request):
     form = Loginform()
     context = {
