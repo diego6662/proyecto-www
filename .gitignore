@@ -1,0 +1,21 @@
+#dont track this folder
+__pycache__
+__pycache__/
+migrations
+migrations/
+*/__pycache__/
+tiendaMuebles/__pycache__/
+../__pycache__/
+/../__pycache__/
+tiendaMueblesProyect/tiendaMuebles/__pycache__/
+tiendaMueblesProyect/gestionClientes/__pycache__/
+tiendaMueblesProyect/productos/__pycache__/
+db.sqlite3
+pedidos/__pycache__/
+pedidos/migrations/__pycache__/
+*.log
+*.pot
+*.pyc
+media
+
+.bak
