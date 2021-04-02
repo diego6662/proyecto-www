@@ -16,6 +16,7 @@
       <link rel="stylesheet" href="{% static 'vuelos/css/style.css' %}">
       <link rel="stylesheet" href="{% static 'vuelos/css/bootstrap-select.min.css' %}">
       <link rel="stylesheet" href="{% static 'vuelos/css/slick.min.css' %">
+      <link rel="stylesheet" href="{% static 'vuelos/css/select2.min.css' %}">
       <!--responsive css-->
       <link rel="stylesheet" href="{% static 'vuelos/css/responsive.css' %}">
    </head>
@@ -27,14 +28,7 @@
             <div class="container-fluid">
                <div class="row">
                   <div class="col-md-4 col-sm-12 left-rs">
-                     <div class="navbar-header">
-                        <button type="button" id="top-menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> 
-                        <span class="sr-only">Toggle navigation</span> 
-                        <span class="icon-bar"></span> 
-                        <span class="icon-bar"></span> 
-                        <span class="icon-bar"></span> 
-                        </button>
-                        <a href="index.html" class="navbar-brand"><img src="{% static 'images/logo .png' %}" alt="Tuluayork" /></a>
+                     <div class="navbar-header"> <a href="index.html"><img class="scale-down" src="{% static 'vuelos/images/logo.png' %}" alt="tuluayork logo" class="img" width="70px" height="70px" /></a>
                      </div>
                   </div>
                   <div class="col-md-8 col-sm-12">
@@ -55,7 +49,6 @@
          </nav>
       </header>
      
-      <!-- desde aqui esto es lo que cambia en todos los urls-->
       {% block content %}
       {% endblock %}
       <footer>
@@ -118,6 +111,7 @@
       <script src="{% static 'vuelos/js/bootstrap.min.js' %}"></script> 
       <script src="{% static 'vuelos/js/bootstrap-select.min.js' %}"></script>
       <script src="{% static 'vuelos/js/slick.min.js' %}"></script> 
+      <script src="{% static 'vuelos/js/select2.full.min.js' %}"></script> 
       <script src="{% static 'vuelos/js/wow.min.js' %}"></script>
       <!--custom js--> 
       <script src="{% static 'vuelos/js/custom.js' %}"></script>

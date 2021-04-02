@@ -1,0 +1,123 @@
+
+{% extends 'vuelos/base.html' %}
+
+{% load static %}
+<title> Vuelo </title>
+{% block nav %}
+   <li><a href="#">Iniciar Sesión</a></li>
+   <li><a class="custom-b" href="#">Registrarse</a></li>
+{% endblock %}
+      {% block content %}
+      
+      <!-- Modal -->
+      
+      <div class="product-page-main">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="prod-page-title">
+                     <h2>Vuelo a ...</h2>
+                     <p>Aeropuerto  <b> xxxxx </b> </p>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               
+               <div class="col-md-7 col-sm-8">
+                  <div class="md-prod-page">
+                     <div class="md-prod-page-in">
+                        <div class="page-preview">
+                           <div class="preview">
+                              <div class="preview-pic tab-content">
+                                 <div class="tab-pane active" id="pic-1"><img src="{% static 'vuelos/images/lag-60.png' %}" alt="#" /></div>
+                                 <div class="tab-pane" id="pic-2"><img src="{% static 'vuelos/images/lag-61.png' %}" alt="#" /></div>
+                                 <div class="tab-pane" id="pic-3"><img src="{% static 'vuelos/images/lag-60.png' %}" alt="#" /></div>
+                                 <div class="tab-pane" id="pic-4"><img src="{% static 'vuelos/images/lag-61.png' %}" alt="#" /></div>
+                              </div>
+                              <ul class="preview-thumbnail nav nav-tabs">
+                                 <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{% static 'vuelos/images/lag-60.png' %}" alt="#" /></a></li>
+                                 <li><a data-target="#pic-2" data-toggle="tab"><img src="{% static 'vuelos/images/lag-61.png' %}" alt="#" /></a></li>
+                                 <li><a data-target="#pic-3" data-toggle="tab"><img src="{% static 'vuelos/images/lag-60.png' %}" alt="#" /></a></li>
+                                 <li><a data-target="#pic-4" data-toggle="tab"><img src="{% static 'vuelos/images/lag-61.png' %}" alt="#" /></a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        
+                     </div>
+                     <div class="description-box">
+                        <div class="dex-a">
+                           <h4>Descripción</h4>
+                           <p>Aqui va una descripción del vuelo bien generica :v.
+                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                              lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                              when an unknown printer took a galley of type and scrambled it to make a 
+                              type specimen book..
+                           </p>
+                           <br>
+                           <h4>Escalas</h4>
+                           <p>Tuluá / Cali / Bogotá </p>
+                        </div>
+                        <div class="spe-a">
+                           <h4>Especificaciones</h4>
+                           <ul>
+                              <li class="clearfix">
+                                 <div class="col-md-4">
+                                    <h5>Pasajeros</h5>
+                                 </div>
+                                 <div class="col-md-8">
+                                    <p>1</p>
+                                 </div>
+                              </li>
+                              <li class="clearfix">
+                                 <div class="col-md-4">
+                                    <h5>Maletas</h5>
+                                 </div>
+                                 <div class="col-md-8">
+                                    <p>1</p>
+                                 </div>
+                              </li>
+                              <li class="clearfix">
+                                 <div class="col-md-4">
+                                    <h5>Mascotas</h5>
+                                 </div>
+                                 <div class="col-md-8">
+                                    <p>No</p>
+                                 </div>
+                              </li>
+                              <li class="clearfix">
+                                 <div class="col-md-4">
+                                    <h5>Tipo de asiento</h5>
+                                 </div>
+                                 <div class="col-md-8">
+                                    <p>Turista</p>
+                                 </div>
+                              </li>
+                              
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  
+               </div>
+               <div class="col-md-3 col-sm-12">
+                  <div class="price-box-right">
+                     <h4>Precio</h4>
+                     <h3>$50000 <span> pesos </span></h3>
+                     <p>Fecha</p>
+                     <select class="form-control select2">
+                        <option value="1">Abril 1 </option>
+                        <option value="2">Abril 2 </option>
+                        <option value="3">Abril 3 </option>
+                        <option value="4">Abril 4 </option>
+                        <option value="5">Abril 5 </option>
+                     </select>
+                     <a href="#">Reservar</a>
+                     <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>2 horas</strong> en vuelo.</h5>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      {% endblock %}
+      
