@@ -3,7 +3,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout,authenticate
 from django.contrib.auth.models import  User
 from django.http import  HttpResponse
-from forms import Loginform, Aerolineaform, Vueloform
+from forms import Loginform,  RegistroClienteform
 #
 # Create your views here.
 def login(request):
@@ -28,6 +28,10 @@ def registrar_usuario(request):
     form = RegistroClienteform()
 
     if request.method == 'POST':
-        return HttpResponse(request.POST['cc'] + " " + request.POST['username']+ " " + request.POST['email']+ " " + request.POST['password1']+ " " + request.POST['password2'])
+        if form.is_valid() :
+            clean_data = form.cleaned_data
+            return HttpResponse(clean_data)
+        else:
+            return  render(request,'vuelos/signup.html', {'form':form,'error':form.errors })
     else:
         return render(request,'vuelos/signup.html',{'form':form})
