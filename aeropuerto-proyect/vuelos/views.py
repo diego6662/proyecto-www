@@ -2,8 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout,authenticate
 from django.contrib.auth.models import  User
-from forms import Loginform, Aerolineaform
-from .models import Aerolinea
+from forms import Loginform, Aerolineaform, Vueloform
+from .models import Aerolinea, Vuelo
 # Create your views here.
 def index(request):
     return render(request,'vuelos/index.html')
@@ -39,4 +39,16 @@ def registrar_aerolinea(request):
 
     else:
         return render(request,'vuelos/registrarAero.html',context)
+
+def registrar_vuelo(request):
+    form = Vueloform()
+    aerolineas = Aerolinea.objects.all()
+    context = {
+            'form':form,
+            'aero':aerolineas
+            }
+    if request.method == 'POST':
+                
+    else:
+        return render(request,'vuelos/registroVuelo.html',context)
 

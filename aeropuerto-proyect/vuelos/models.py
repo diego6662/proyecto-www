@@ -7,7 +7,7 @@ class Aerolinea(models.Model):
     nombre = models.CharField(max_length=100,verbose_name="nombre")
     
     def __str__(self):
-        return nombre
+        return self.nombre
 
 
 class Vuelo(models.Model):
@@ -16,7 +16,7 @@ class Vuelo(models.Model):
     costo = models.FloatField(blank=False,null=False, verbose_name="costo")
 
     def __str__(self):
-        return str(id_vuelo)
+        return str(self.id_vuelo)
 
 
 class Escala(models.Model):
@@ -29,9 +29,6 @@ class Escala(models.Model):
     fecha_llegada = models.DateTimeField(null=False,blank=False)
     requicitos = models.TextField(null=False,blank=False)
 
-<<<<<<< HEAD
-=======
     def __str__(self):
-        return str(vuelo) +"," +  str(nombre_procedencia) 
->>>>>>> 8e261f7b3e17fe66f1ec2e7b82b36f6286c5f555
+        return str(self.vuelo) +"," +  str(self.nombre_procedencia) 
 
