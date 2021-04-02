@@ -4,7 +4,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 from vuelos.models import Aerolinea
-
 class Loginform(forms.Form):
     usuario = forms.CharField(max_length=20,label='Nombre de usuario')
     contrasena = forms.CharField(widget=forms.PasswordInput(),
@@ -29,11 +28,11 @@ class Vueloform(forms.Form):
 
 
 class Escalaform(forms.Form):
-    id_vuelo = forms.CharField(max_length=30, label='Codigo del vuelo',)
+#    id_vuelo = forms.CharField(max_length=30, label='Codigo del vuelo',)
     postal_procedencia = forms.IntegerField(label='Codigo postal procedencia')
     postal_destino = forms.IntegerField(label='Codigo postal destino')
-    fecha_salida = forms.DateField(label='Fecha de salida')
-    fecha_llegada = forms.DateField(label='Fecha de llegada')
+    fecha_salida = forms.DateField(label='Fecha de salida', widget = forms.SelectDateWidget(years=[2021],months={3:'Abril'},))
+    fecha_llegada = forms.DateField(label='Fecha de llegada', widget = forms.SelectDateWidget(years=[2021],months={3:'Abril'}))
     requisitos = forms.CharField(widget=forms.Textarea, label='Requisitos')
 
 

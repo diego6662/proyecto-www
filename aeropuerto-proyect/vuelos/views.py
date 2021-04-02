@@ -5,7 +5,7 @@ from django.contrib.auth.models import  User
 from forms import Loginform, Aerolineaform, RegistroClienteform 
 from .models import Aerolinea
 from django.http import  HttpResponse
-from forms import Loginform, Aerolineaform, Vueloform
+from forms import Loginform, Aerolineaform, Vueloform, Escalaform 
 from .models import Aerolinea, Vuelo
 # Create your views here.
 
@@ -51,6 +51,12 @@ def registrar_vuelo(request):
         return render(request,'vuelos/registroVuelo.html',context)
 
 def registrar_escala(request,id):
-    a = {'id':id}
-    
-    return render(request,'vuelos/registroEscala.html',a)
+    form = Escalaform()
+    context = {
+            'id':id,
+            'form':form
+            }
+    if request.method == 'POST':
+        pass
+    else:
+        return render(request,'vuelos/registroEscala.html',context)
