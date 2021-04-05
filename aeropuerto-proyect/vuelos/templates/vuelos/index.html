@@ -38,73 +38,21 @@
                   </div>
                </div>
                <br>
-               <div class="row clearfix">
+	       {%for vuelo in vuelos%}
+               <!-- <div class="row clearfix"> -->
                   <div class="col-lg-3 col-sm-6 col-md-3">
                      <a href="productpage.html">
                         <div class="box-img">
-                           <h4>Bogotá</h4>
-                           <img src="{% static 'vuelos/images/product/1.png' %}" alt="imagendelaciudad" />
-                        </div>
-                     </a>
-                  </div>
-                  <div class="col-lg-3 col-sm-6 col-md-3">
-                     <a href="productpage.html">
-                        <div class="box-img">
-                           <h4>Cali</h4>
-                           <img src="{% static 'vuelos/images/product/2.png' %}" alt="imagendelaciudad" />
-                        </div>
-                     </a>
-                  </div>
-                  <div class="col-lg-3 col-sm-6 col-md-3">
-                     <a href="productpage.html">
-                        <div class="box-img">
-                           <h4>Medellín</h4>
-                           <img src="{% static 'vuelos/images/product/3.png' %}" alt="imagendelaciudad" />
-                        </div>
-                     </a>
-                  </div>
-                  <div class="col-lg-3 col-sm-6 col-md-3">
-                     <a href="productpage.html">
-                        <div class="box-img">
-                           <h4>Barranquilla</h4>
-                           <img src="{% static 'vuelos/images/product/5.png' }" alt="imagendelaciudad" />
-                        </div>
-                     </a>
-                  </div>
-                  <div class="col-lg-3 col-sm-6 col-md-3">
-                     <a href="productpage.html">
-                        <div class="box-img">
-                           <h4>San Andrés</h4>
-                           <img src="{% static 'vuelos/images/product/10.png' %}" alt="imagendelaciudad" />
-                        </div>
-                     </a>
-                  </div>
-                  <div class="col-lg-3 col-sm-6 col-md-3">
-                     <a href="productpage.html">
-                        <div class="box-img">
-                           <h4>Pasto</h4>
-                           <img src="{% static 'vuelos/images/product/11.png' %}" alt="imagendelaciudad" />
-                        </div>
-                     </a>
-                  </div>
-                  <div class="col-lg-3 col-sm-6 col-md-3">
-                     <a href="productpage.html">
-                        <div class="box-img">
-                           <h4>Neiva</h4>
-                           <img src="{% static 'vuelos/images/product/12.png' %}" alt="imagendelaciudad" />
-                        </div>
-                     </a>
-                  </div>
-                  <div class="col-lg-3 col-sm-6 col-md-3">
-                     <a href="productpage.html">
-                        <div class="box-img">
-                           <h4>Leticia</h4>
-                           <img src="{% static 'vuelos/images/product/13.png' %}" alt="imagendelaciudad" />
-                        </div>
+			  <h4>{{vuelo.destino}}</h4>
+                           <img src="{% static 'vuelos/images/product/avion.png' %}" alt="imagendelaciudad" />
+			   <h5>{{vuelo.id_vuelo}}</h5>
+			   <h5>{{vuelo.costo}}</h5>
+			</div>
                      </a>
                   </div>
                   
-               </div>
+               <!-- </div> -->
+	       {% endfor %}
             </div>
          </div>
       </div>

@@ -10,7 +10,11 @@ from .models import Aerolinea, Vuelo, Escala
 # Create your views here.
 
 def index(request):
-    return render(request,'vuelos/index.html')
+    vuelos = Vuelo.objects.all()
+    context = {
+            'vuelos':vuelos
+            }
+    return render(request,'vuelos/index.html',context)
 
 def vuelo(request):
     return render(request,'vuelos/vuelo.html')
@@ -20,7 +24,7 @@ def vuelo(request):
 def registrar_aerolinea(request):
     form = Aerolineaform()
     context = {
-            'form':form
+            'form':form 
             }
     if request.method == 'POST':
         nombre = request.POST['aerolinea']
@@ -42,9 +46,10 @@ def registrar_vuelo(request):
     if request.method == 'POST':
         id_vuelo = request.POST['id_vuelo']                
         id_aero = int(request.POST['id_aerolinea'])
+        destino = request.POST['destino']
         costo = float(request.POST['costo'])
         aerolinea = Aerolinea.objects.get(pk = id_aero)
-        vuelo = Vuelo(id_vuelo=id_vuelo,aerolinea=aerolinea,costo=costo)
+        vuelo = Vuelo(id_vuelo=id_vuelo,aerolinea=aerolinea,destino=destino,costo=costo)
         vuelo.save()
         return redirect('vuelos:registrar-escala',id_vuelo)
     else:
@@ -72,3 +77,17 @@ def registrar_escala(request,id):
         return redirect('vuelos:registrar-escala',id)
     else:
         return render(request,'vuelos/registroEscala.html',context)
+
+def modificar_aerolinea(request,id):
+    form = Aerolineaform()
+    context = {
+            'form':form
+            }
+    if request.method == 'POST':
+        aerolinea = Aerolinea.objects.get(pk=id)
+        nombre = request.POST['aerolinea']
+        aerolinea.nombre = nombre
+        aerolinea.save()
+        return redirect('/')
+    else:
+        return render(request,'vuelos/modificarAero.html',context)

@@ -13,6 +13,7 @@ class Aerolinea(models.Model):
 class Vuelo(models.Model):
     id_vuelo = models.CharField(max_length=30,primary_key=True, verbose_name="id_vuelo")
     aerolinea = models.ForeignKey(Aerolinea,on_delete=models.CASCADE, verbose_name="aerolinea")
+    destino = models.CharField(max_length=30)
     costo = models.FloatField(blank=False,null=False, verbose_name="costo")
 
     def __str__(self):

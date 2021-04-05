@@ -2,11 +2,13 @@ from django.contrib import admin
 from .models import *
 # Register your models here.
 
-class AerolineaAdmin(admin.ModelAdmin):
-    fields = ('nombre',)
 
+class AerolineaAdmin(admin.ModelAdmin):
+    #fields = ('nombre',)
+    readonly_fields = ['id']
+    fields = ['id','nombre']
 class VueloAdmin(admin.ModelAdmin):
-    fields = ('id_vuelo','aerolinea','costo')
+    fields = ['id_vuelo','aerolinea','destino','costo']
 
 class EscalaAdmin(admin.ModelAdmin):
     fields = ('vuelo','nombre_procedencia','cod_procedencia','nombre_destino','cod_destino','fecha_salida','fecha_llegada','requisitos')
