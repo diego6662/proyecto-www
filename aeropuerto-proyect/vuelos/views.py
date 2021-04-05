@@ -91,3 +91,12 @@ def modificar_aerolinea(request,id):
         return redirect('/')
     else:
         return render(request,'vuelos/modificarAero.html',context)
+
+def vista_vuelo(request,id):
+    vuelo = Vuelo.objects.get(pk=id)
+    escalas = Escala.objects.filter(vuelo = id)
+    context = {
+            'vuelo':vuelo,
+            'escalas':escalas
+            }
+    return render(request,'vuelos/vistaVuelo.html',context)

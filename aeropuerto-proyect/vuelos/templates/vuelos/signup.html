@@ -1,12 +1,12 @@
 {% extends 'vuelos/base.html' %}
 
 {% load static %}
-<title> Iniciar Sesion </title>
 {% block nav %}
    <li><a href="#">Iniciar Sesión</a></li>
    <li><a class="custom-b" href="#">Registrarse</a></li>
 {% endblock %}
 {% block content %}
+<title> Iniciar Sesion </title>
 <br>
 <div class="container mt-5 mb-5" >
   <div class="row d-flex align-items-center justify-content-center">
@@ -29,7 +29,7 @@
               <button class="btn btn-primary mr-4 signup" type="submit">Iniciar Sesión</button>
             </form>
             {% if error != None %}
-            <br>
+	    <br>
             <h1>{{error}}</h1>
             {% endif %}
           </div>

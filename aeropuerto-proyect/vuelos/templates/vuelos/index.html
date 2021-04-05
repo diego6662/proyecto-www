@@ -2,12 +2,12 @@
 {% extends 'vuelos/base.html' %}
 
 {% load static %}
-<title> Tuluayork </title>
 {% block nav %}
    <li><a href="#">Iniciar Sesión</a></li>
    <li><a class="custom-b" href="#">Registrarse</a></li>
 {% endblock %}
 {% block content %}
+<title> Tuluayork </title>
       <div class="page-content-product">
          <div class="main-product">
             <div class="container">
@@ -41,7 +41,7 @@
 	       {%for vuelo in vuelos%}
                <!-- <div class="row clearfix"> -->
                   <div class="col-lg-3 col-sm-6 col-md-3">
-                     <a href="productpage.html">
+		    <a href="{% url 'vuelos:vista-vuelo' vuelo.id_vuelo %}">
                         <div class="box-img">
 			  <h4>{{vuelo.destino}}</h4>
                            <img src="{% static 'vuelos/images/product/avion.png' %}" alt="imagendelaciudad" />
