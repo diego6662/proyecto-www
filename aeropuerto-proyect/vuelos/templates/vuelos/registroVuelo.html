@@ -1,10 +1,10 @@
 {% extends 'vuelos/base.html' %}
-<title>Registrar vuelo</title>
 {% block nav %}
    <li><a href="#">Iniciar Sesión</a></li>
    <li><a class="custom-b" href="#">Registrarse</a></li>
 {% endblock %}
 {% block content %}
+<title>Registrar vuelo</title>
 <br>
 
 <div class="container mt-5 mb-5" >
@@ -30,7 +30,11 @@
 	
 	      {{form.id_aerolinea}}
 	      <br>
-              <label for="id_costo" class="form-check-label"> Precio: </label><br>
+
+              <label for="id_destino" class="form-check-label"> Destino: </label>
+	      {{form.destino}}
+	      <br>
+              <label for="id_costo" class="form-check-label"> Precio: </label>
               
               <!-- <input type="text" name="id_costo" maxlength="30" required="" id="id_costo" class="form-control"> -->
 	      {{form.costo}}

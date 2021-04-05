@@ -4,7 +4,7 @@
    <li><a class="custom-b" href="#">Registrarse</a></li>
 {% endblock %}
 {% block content %}
-<title>Registrar Aerolinea</title>
+<title>Modificar Aerolinea</title>
 <br>
 
 <div class="container mt-5 mb-5" >
@@ -13,16 +13,16 @@
         <div class="card px-5 py-5">
           <div class='text-left'>
             <br>
-            <h1> Registrar Aerolinea</h1>
+            <h1> Modificar Aerolinea</h1>
             <br>
-            <form method='POST'><br>
+            <form method='POST'>
               {% csrf_token %}
               <br>
-              <label for="id_aerolinea" class="form-check-label"> Nombre de la nueva Aerolínea: </label><br>
+              <label for="id_aerolinea" class="form-check-label"> Nuevo nombre para la Aerolínea: </label>
               <!-- <input type="text" name="aerolinea" maxlength="30" required="" id="id_aerolinea" class="form-control"> -->
-	            {{form.aerolinea}}
+	      {{form.aerolinea}}
               <br>
-              <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Registrar</button>
+              <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Modificar</button>
             </form>
           </div>
           <br>
@@ -33,9 +33,9 @@
 </div>
 <br>
 
-
-
-
-
-
 {% endblock %}
+
+
+
+
+
