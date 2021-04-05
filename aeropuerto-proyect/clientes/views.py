@@ -35,3 +35,6 @@ def registrar_usuario(request):
             return  render(request,'vuelos/signup.html', {'form':form,'error':form.errors })
     else:
         return render(request,'vuelos/signup.html',{'form':form})
+
+def perfil(request):
+    return render(request, 'vuelos/perfil.html')

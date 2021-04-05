@@ -3,8 +3,8 @@
 {% load static %}
 <title> Iniciar Sesion </title>
 {% block nav %}
-   <li><a href="#">Iniciar Sesión</a></li>
-   <li><a class="custom-b" href="#">Registrarse</a></li>
+   <li><a href="login">Iniciar Sesión</a></li>
+   <li><a class="custom-b" href="signup">Registrarse</a></li>
 {% endblock %}
 {% block content %}
 <br>
@@ -12,21 +12,28 @@
   <div class="row d-flex align-items-center justify-content-center">
     <div class="col-md-6" >
         <div class="card px-5 py-5">
-          <div class="form-input">
+          <div class="form-input"><br>
+            <h1> ¡Regístrate!</h1>
+            <br>
             <form method="post">
               {% csrf_token %}
               <!--{{form}}-->
-              <label for="id_cc">Identificacion:</label><input type="number" name="cc" required="" id="id_cc">
+              <label for="id_cc" class="form-check-label">Identificacion:</label>
+              <input type="number" name="cc" required="" id="id_cc"  class="form-control">
               <br>
-              <label for="id_username">Username:</label><input type="text" name="username" maxlength="20" required="" id="id_username">
+              <label for="id_username" class="form-check-label">Username:</label>
+              <input type="text" name="username" maxlength="20" required="" id="id_username" class="form-control">
               <br>
-              <label for="id_email">Email:</label><input type="email" name="email" maxlength="30" required="" id="id_email">
+              <label for="id_email" class="form-check-label">Email:</label>
+              <input type="email" name="email" maxlength="30" required="" id="id_email" class="form-control">
               <br>
-              <label for="id_password1">Contraseña:</label><input type="password" name="password1" required="" id="id_password1">
+              <label for="id_password1" class="form-check-label">Contraseña:</label>
+              <input type="password" name="password1" required="" id="id_password1" class="form-control">
               <br>
-              <label for="id_password2">Confirmar Contraseña:</label><input type="password" name="password2" required="" id="id_password2">
+              <label for="id_password2" class="form-check-label">Confirmar Contraseña:</label>
+              <input type="password" name="password2" required="" id="id_password2" class="form-control">
               <br>
-              <button class="btn btn-primary mr-4 signup" type="submit">Iniciar Sesión</button>
+              <button class="btn-success btn btn-primary mr-4 signup" type="submit">Registrarse</button>
             </form>
             {% if error != None %}
             <br>

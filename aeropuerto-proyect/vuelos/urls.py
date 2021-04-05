@@ -10,6 +10,7 @@ urlpatterns = [
     path('registrar-aerolinea', views.registrar_aerolinea, name='registrar-aerolinea'),
     path('registrar-vuelo', views.registrar_vuelo, name='registrar-vuelo'),
     path('registrar-escala-<str:id>', views.registrar_escala, name='registrar-escala'),
+    
 
 ]
 
