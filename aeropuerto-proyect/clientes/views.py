@@ -50,4 +50,11 @@ def registrar_usuario(request):
             context['error'] = 'Las contraseñas no coinciden'
             return render(request,'vuelos/signup.html',context)
     else:
+<<<<<<< HEAD
         return render(request,'vuelos/signup.html',context)
+=======
+        return render(request,'vuelos/signup.html',{'form':form})
+
+def perfil(request):
+    return render(request, 'vuelos/perfil.html')
+>>>>>>> a9351de9d7c7da8b946e79f8fbd53a005484e48e
