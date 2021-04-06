@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout,authenticate
-from django.contrib.auth.models import  User
 from django.http import  HttpResponse
 from forms import Loginform,  RegistroClienteform
+
+from django.contrib.auth.models import  User
 from .models import Cliente
 #
 # Create your views here.
@@ -30,11 +31,26 @@ def logout_user(request):
     return redirect('/')
 
 def registrar_usuario(request):
-    form = RegistroClienteform()
-    context = {
-            'form':form
-            }
+    if request.method == 'POST':
+        form = RegistroClienteform(request.POST)
+        if form.is_valid():
+            # registrar los usuarios y el cliente
+            usr = User(username=request.POST["username"], email=request.POST["email"], password=request.POST["password1"])
+            # cerar usuario en la base de datos
+            usr.save()
+            #crear cliente
+            clt = Cliente(cc=request.POST["cc"],vuelos_disponibles=2, usuario_dj_id=usr.id)
+            clt.save()
+            return redirect('clientes:login')
+        else:
+            return render(request,'vuelos/signup.html',{'form':form})
+    else:
+        form = RegistroClienteform()
+        return render(request,'vuelos/signup.html',{'form':form})
 
+
+
+"""
     if request.method == 'POST':
         p1 = request.POST['password1']
         p2 = request.POST['password2']
@@ -62,6 +78,7 @@ def registrar_usuario(request):
             return render(request,'vuelos/signup.html',context)
     else:
         return render(request,'vuelos/signup.html',{'form':form})
+"""
 
 def perfil(request):
     return render(request, 'vuelos/perfil.html')
