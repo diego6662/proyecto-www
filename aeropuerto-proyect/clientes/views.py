@@ -31,7 +31,10 @@ def logout_user(request):
     return redirect('/')
 
 def registrar_usuario(request):
-    
+    form = RegistroClienteform()
+    context = {
+            'form':form
+            }
     if request.method == 'POST':
         p1 = request.POST['password1']
         p2 = request.POST['password2']
