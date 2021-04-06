@@ -99,4 +99,4 @@ def vista_vuelo(request,id):
             'vuelo':vuelo,
             'escalas':escalas
             }
-    return render(request,'vuelos/vistaVuelo.html',context)
+    return render(request,'vuelos/vuelo.html',context)

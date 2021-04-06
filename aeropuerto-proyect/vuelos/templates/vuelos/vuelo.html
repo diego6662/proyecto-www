@@ -2,13 +2,9 @@
 {% extends 'vuelos/base.html' %}
 
 {% load static %}
-<title> Vuelo </title>
-{% block nav %}
-   <li><a href="#">Iniciar Sesión</a></li>
-   <li><a class="custom-b" href="#">Registrarse</a></li>
-{% endblock %}
-      {% block content %}
+{% block content %}
       
+<title> Vuelo </title>
       <!-- Modal -->
       
       <div class="product-page-main">
@@ -16,8 +12,8 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="prod-page-title">
-                     <h2>Vuelo a ...</h2>
-                     <p>Aeropuerto  <b> xxxxx </b> </p>
+		    <h2>Vuelo a {{vuelo.destino}}</h2>
+		    <p>Numero de vuelo  <b> {{vuelo.id_vuelo}},{{vuelo.aerolinea}} </b> </p>
                   </div>
                </div>
             </div>
@@ -29,16 +25,16 @@
                         <div class="page-preview">
                            <div class="preview">
                               <div class="preview-pic tab-content">
-                                 <div class="tab-pane active" id="pic-1"><img src="{% static 'vuelos/images/lag-60.png' %}" alt="#" /></div>
+                                 <div class="tab-pane active" id="pi-1"><img src="{% static 'vuelos/images/lag-60.png' %}" alt="#" /></div>
                                  <div class="tab-pane" id="pic-2"><img src="{% static 'vuelos/images/lag-61.png' %}" alt="#" /></div>
                                  <div class="tab-pane" id="pic-3"><img src="{% static 'vuelos/images/lag-60.png' %}" alt="#" /></div>
-                                 <div class="tab-pane" id="pic-4"><img src="{% static 'vuelos/images/lag-61.png' %}" alt="#" /></div>
+                                 <div class="tab-pane" id="pic-4"><img src="{% static 'vuelos/images/lag-63.png' %}" alt="#" /></div>
                               </div>
                               <ul class="preview-thumbnail nav nav-tabs">
                                  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{% static 'vuelos/images/lag-60.png' %}" alt="#" /></a></li>
                                  <li><a data-target="#pic-2" data-toggle="tab"><img src="{% static 'vuelos/images/lag-61.png' %}" alt="#" /></a></li>
                                  <li><a data-target="#pic-3" data-toggle="tab"><img src="{% static 'vuelos/images/lag-60.png' %}" alt="#" /></a></li>
-                                 <li><a data-target="#pic-4" data-toggle="tab"><img src="{% static 'vuelos/images/lag-61.png' %}" alt="#" /></a></li>
+                                 <li><a data-target="#pic-4" data-toggle="tab"><img src="{% static 'vuelos/images/lag-63.png' %}" alt="#" /></a></li>
                               </ul>
                            </div>
                         </div>
@@ -55,7 +51,9 @@
                            </p>
                            <br>
                            <h4>Escalas</h4>
-                           <p>Tuluá / Cali / Bogotá </p>
+			  {% for escala in escalas %}
+                           <p>- {{escala.nombre_procedencia}}</p>
+			  {% endfor %}
                         </div>
                         <div class="spe-a">
                            <h4>Especificaciones</h4>
@@ -102,14 +100,12 @@
                <div class="col-md-3 col-sm-12">
                   <div class="price-box-right">
                      <h4>Precio</h4>
-                     <h3>$50000 <span> pesos </span></h3>
+		     <h3>${{vuelo.costo}} <span> pesos </span></h3>
                      <p>Fecha</p>
                      <select class="form-control select2">
-                        <option value="1">Abril 1 </option>
-                        <option value="2">Abril 2 </option>
-                        <option value="3">Abril 3 </option>
-                        <option value="4">Abril 4 </option>
-                        <option value="5">Abril 5 </option>
+		       <option value="1">Abril 1 </option>
+		       <option value="2">Abril 2 </option>
+		       <option value="3">Abril 3 </option>
                      </select>
                      <a href="#">Reservar</a>
                      <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>2 horas</strong> en vuelo.</h5>

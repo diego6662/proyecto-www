@@ -4,6 +4,7 @@ from django.contrib.auth import logout,authenticate
 from django.contrib.auth.models import  User
 from django.http import  HttpResponse
 from forms import Loginform,  RegistroClienteform
+from .models import Cliente
 #
 # Create your views here.
 def login(request):
@@ -26,12 +27,27 @@ def login(request):
 
 def registrar_usuario(request):
     form = RegistroClienteform()
+    context = {
+            'form':form
+            }
 
     if request.method == 'POST':
-        if form.is_valid() :
-            clean_data = form.cleaned_data
-            return HttpResponse(clean_data)
+        p1 = request.POST['password1']
+        p2 = request.POST['password2']
+        if p1 == p2:
+            try:
+                cc = int(request.POST['cc'])
+                user = request.POST['username']
+                email = request.POST['email']
+                User.objects.get_or_create(username = user, email = email, password = p1)
+                usuario = User.objects.get(username=user)
+                cliente = Cliente(cc=cc,vuelos_disponibles=2, usuario_dj = usuario)
+                cliente.save()
+                return redirect('/')
+            except :
+                print('uwu')
         else:
-            return  render(request,'vuelos/signup.html', {'form':form,'error':form.errors })
+            context['error'] = 'Las contraseñas no coinciden'
+            return render(request,'vuelos/signup.html',context)
     else:
-        return render(request,'vuelos/signup.html',{'form':form})
+        return render(request,'vuelos/signup.html',context)

@@ -15,7 +15,7 @@ class Vuelo(models.Model):
     aerolinea = models.ForeignKey(Aerolinea,on_delete=models.CASCADE, verbose_name="aerolinea")
     destino = models.CharField(max_length=30)
     costo = models.FloatField(blank=False,null=False, verbose_name="costo")
-
+    
     def __str__(self):
         return str(self.id_vuelo)
 
