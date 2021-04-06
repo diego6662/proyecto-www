@@ -9,7 +9,7 @@ class Cliente(models.Model):
     usuario_dj = models.ForeignKey(User,on_delete=models.CASCADE, null = False, blank=False,verbose_name="usuario")
     image_perfil = models.ImageField(upload_to='clientes/perfiles/',null = True, blank=True)
     def __str__(self):
-        return self.usuario_dj
+        return str(self.cc)
 
 
 
