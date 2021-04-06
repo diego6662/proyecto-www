@@ -15,7 +15,11 @@
           <div class="form-input">
             <form method="post">
               {% csrf_token %}
-              <!--{{form}}-->
+              <div class="form-row">
+                {{form.as_div}}
+              </div>
+
+              <!--
               <label for="id_cc">Identificacion:</label><input type="number" name="cc" required="" id="id_cc">
               <br>
               <label for="id_username">Username:</label><input type="text" name="username" maxlength="20" required="" id="id_username">
@@ -25,6 +29,7 @@
               <label for="id_password1">Contraseña:</label><input type="password" name="password1" required="" id="id_password1">
               <br>
               <label for="id_password2">Confirmar Contraseña:</label><input type="password" name="password2" required="" id="id_password2">
+              -->
               <br>
               <button class="btn btn-primary mr-4 signup" type="submit">Iniciar Sesión</button>
             </form>

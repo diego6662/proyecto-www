@@ -9,8 +9,7 @@ class Cliente(models.Model):
     usuario_dj = models.ForeignKey(User,on_delete=models.CASCADE, null = False, blank=False,verbose_name="usuario")
 
     def __str__(self):
-        return str(self.cc) + str(vuelos_disponibles) + usuario_dj.mail+usuario_dj.username
-
+        return self.usuario_dj
 
 
 class Reserva(models.Model):
