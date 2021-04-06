@@ -1,0 +1,25 @@
+{% extends 'vuelos/base.html' %}
+
+
+{% block content %}
+<title>vuelo {{vuelo.id_vuelo}}</title>
+<div class='text-center'>
+  <h3>Vuelo {{vuelo.id_vuelo}}</h3>
+  <br>
+  <h3>Aerolinea: {{vuelo.aerolinea}}</h3>
+  <br>
+  <h3>Destino: {{vuelo.destino}}</h3>
+  <br>
+  {% if escalas.count > 0 %}
+  <h3>Escalas</h3>
+  <br>
+  {% for escala in escalas %}
+  <h3>Ciudad de la escala: {{escala.nombre_procedencia}}</h3>
+  <br>
+  <h3>Fecha de la escala: {{escala.fecha_salida}}</h3>
+  <br>
+  {% endfor %}
+  {% endif %}
+</div>
+
+{% endblock %}

@@ -128,6 +128,9 @@ class RegistroClienteform(forms.Form):
         return cd
 """
 """
+    password1 = forms.CharField(widget=forms.PasswordInput(),label="Contraseña")
+    password2 = forms.CharField(widget=forms.PasswordInput(),label="Confirmar Contraseña")
+    
     def clean(self):
         cd = self.get.cleaned_data
 
@@ -155,6 +158,7 @@ class Aerolineaform(forms.Form):
 class Vueloform(forms.Form):
     id_vuelo = forms.CharField(max_length=30, label='Codigo del vuelo')
     id_aerolinea = forms.ModelChoiceField(Aerolinea.objects.all())
+    destino = forms.CharField(max_length=30,label='Destino')
     costo = forms.FloatField(label='Precio')
 
 
