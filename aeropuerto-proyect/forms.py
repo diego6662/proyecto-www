@@ -16,7 +16,7 @@ class RegistroClienteform(forms.Form):
     email = forms.EmailField(max_length=30,required=True ,label='Email')
     password1 = forms.CharField(widget=forms.PasswordInput(),label="Contraseña")
     password2 = forms.CharField(widget=forms.PasswordInput(),label="Confirmar Contraseña")
-
+    
     def clean(self):
         cd = self.get.cleaned_data
 

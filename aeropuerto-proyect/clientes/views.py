@@ -25,6 +25,10 @@ def login(request):
             context['error'] = 'Usuario no registrado'
             return render(request,'vuelos/login.html',context)
 
+def logout_user(request):
+    logout(request)
+    return redirect('/')
+
 def registrar_usuario(request):
     form = RegistroClienteform()
     context = {
