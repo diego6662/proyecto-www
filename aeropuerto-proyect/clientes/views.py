@@ -39,8 +39,7 @@ def registrar_usuario(request):
                 cc = int(request.POST['cc'])
                 user = request.POST['username']
                 email = request.POST['email']
-                User.objects.get_or_create(username = user, email = email, password = p1)
-                usuario = User.objects.get(username=user)
+                usuario = User.objects.create_user(username = user, email = email, password = p1)
                 cliente = Cliente(cc=cc,vuelos_disponibles=2, usuario_dj = usuario)
                 cliente.save()
                 return redirect('/')
@@ -50,11 +49,7 @@ def registrar_usuario(request):
             context['error'] = 'Las contraseñas no coinciden'
             return render(request,'vuelos/signup.html',context)
     else:
-<<<<<<< HEAD
-        return render(request,'vuelos/signup.html',context)
-=======
         return render(request,'vuelos/signup.html',{'form':form})
 
 def perfil(request):
     return render(request, 'vuelos/perfil.html')
->>>>>>> a9351de9d7c7da8b946e79f8fbd53a005484e48e
