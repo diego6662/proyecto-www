@@ -44,11 +44,19 @@ def registrar_usuario(request):
                 user = request.POST['username']
                 email = request.POST['email']
                 usuario = User.objects.create_user(username = user, email = email, password = p1)
+            except :
+                context['error'] = 'El usuario ya existe'
+                return render(request,'vuelos/signup.html',context)
+            try:
+
                 cliente = Cliente(cc=cc,vuelos_disponibles=2, usuario_dj = usuario)
                 cliente.save()
                 return redirect('/')
             except :
-                print('uwu')
+                usuario.delete()
+                context['error'] = 'El usuario ya existe'
+                return render(request,'vuelos/signup.html',context)
+
         else:
             context['error'] = 'Las contraseñas no coinciden'
             return render(request,'vuelos/signup.html',context)
