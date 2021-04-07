@@ -3,8 +3,18 @@
 
 {% load static %}
 {% block nav %}
-   <li><a href="login">Iniciar Sesión</a></li>
-   <li><a class="custom-b" href="signup">Registrarse</a></li>
+
+
+ <div class="btn-group">
+   <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     Cuenta
+   </button>
+   <div class="dropdown-menu">
+      <button class="dropdown-item btn btn-secondary btn-block" type="button"><a href="login">Iniciar Sesión</a></button>
+      <button class="dropdown-item btn btn-secondary btn-block" type="button"><a href="signup">Registrarse</a></button>
+   </div>
+ </div>
+
 {% endblock %}
 {% block content %}
 <title> Tuluayork </title>

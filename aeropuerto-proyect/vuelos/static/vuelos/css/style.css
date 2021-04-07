@@ -59,6 +59,7 @@ h5 {
 
 
 
+
 h1,
 h2,
 h3,
@@ -70,6 +71,11 @@ h6 {
 }
 h7 {
 	color: #fff;
+}
+h2{
+	color: #0077e0;
+	border: #113053;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 ul,
@@ -106,6 +112,15 @@ textarea {
 /*------------------------------------------------------------- 
 	2. HEADER 
 -------------------------------------------------------------*/
+
+.dropdown-menu .dropdown-item{
+	border-style: hidden;
+	display: block;
+}
+
+.dropdown-menu{
+	width: max-content;
+}
 
 header .navbar {
 	border-radius: 0px;
@@ -144,7 +159,9 @@ header .navbar-default .navbar-header {
 	border: none;
 }
 
-.left-rs {}
+.left-rs {
+	padding-left: 100px;
+}
 
 .navbar-brand>img {
 	width: 20%;
@@ -293,7 +310,11 @@ header .navbar-default .navbar-header {
 
 .right-nav {
 	float: right;
-	padding-right: 10px;
+	padding-right: 100px;
+}
+.left-nav {
+	float: left;
+	padding-top: 20px;
 }
 
 .login-sr {
@@ -3483,4 +3504,32 @@ html .ui-button.ui-state-disabled:active {
 .social:hover {
     background-color: #0d6efd;
     border-color: #0d6efd
+}
+
+
+/*------------------------------------------------------------- 
+	10. OWN
+-------------------------------------------------------------*/
+
+#menu ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+#menu #item a{
+	padding: 12px 22px;
+	display: block;
+	text-decoration: none;
+	
+
+}
+#menu #desple {
+	display: none;
+
+}
+
+#menu #item:hover #desple{
+	display: block;
 }
