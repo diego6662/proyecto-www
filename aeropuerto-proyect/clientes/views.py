@@ -3,9 +3,9 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout,authenticate
 from django.http import  HttpResponse
 from forms import Loginform,  RegistroClienteform
-
 from django.contrib.auth.models import  User
 from .models import Cliente
+from django.contrib import messages
 #
 # Create your views here.
 def login(request):
@@ -40,18 +40,20 @@ def registrar_usuario(request):
         p2 = request.POST['password2']
         if p1 == p2:
             try:
-                cc = int(request.POST['cc'])
+                cce = int(request.POST['cc'])
                 user = request.POST['username']
                 email = request.POST['email']
                 usuario = User.objects.create_user(username = user, email = email, password = p1)
+                usuario.save()
             except :
                 context['error'] = 'El usuario ya existe'
                 return render(request,'vuelos/signup.html',context)
             try:
-
-                cliente = Cliente(cc=cc,vuelos_disponibles=2, usuario_dj = usuario)
-                cliente.save()
-                return redirect('/')
+                usuario = User.objects.get(username=user)
+                obj,create = Cliente.objects.get_or_create(cc=cce,vuelos_disponibles=2, usuario_dj = usuario)
+                #obj.save()
+                messages.success(request,'Usuario creado con exito')
+                return redirect('clientes:login')
             except :
                 usuario.delete()
                 context['error'] = 'El usuario ya existe'

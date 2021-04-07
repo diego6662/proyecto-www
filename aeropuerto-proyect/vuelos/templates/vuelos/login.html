@@ -6,7 +6,11 @@
    <li><a class="custom-b" href="signup">Registrarse</a></li>
 {% endblock %}
 {% block content %}
-<title> Iniciar Sesion </title>
+{% if messages %}
+    {% for message in messages %}
+      <script>alert("{{message|safe}}")</script>
+    {% endfor %}
+{% endif %}<title> Iniciar Sesion </title>
 <br>
 <div class="container mt-5 mb-5" >
   <div class="row d-flex align-items-center justify-content-center">

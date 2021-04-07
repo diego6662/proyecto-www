@@ -39,8 +39,9 @@
               <button class="btn-success btn btn-primary mr-4 signup" type="submit"> Registrarse </button>
             </form>
             {% if error != None %}
-	          <br>
-            <h1>{{error}}</h1>
+  <script>
+    alert('{{error}}')
+    </script>
             {% endif %}
           </div>
           </div>

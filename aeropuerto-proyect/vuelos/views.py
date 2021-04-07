@@ -5,6 +5,7 @@ from django.contrib.auth.models import  User
 from forms import Loginform, Aerolineaform, RegistroClienteform 
 from .models import Aerolinea
 from django.http import  HttpResponse
+from django.contrib import messages
 from forms import Loginform, Aerolineaform, Vueloform, Escalaform 
 from .models import Aerolinea, Vuelo, Escala
 # Create your views here.
@@ -12,7 +13,7 @@ from .models import Aerolinea, Vuelo, Escala
 def index(request):
     vuelos = Vuelo.objects.all()
     context = {
-            'vuelos':vuelos
+            'vuelos':vuelos,
             }
     return render(request,'vuelos/index.html',context)
 
