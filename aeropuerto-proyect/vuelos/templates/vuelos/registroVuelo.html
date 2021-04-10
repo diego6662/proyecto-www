@@ -37,12 +37,12 @@
 	      <br>
 	      <label for='id_fecha_vuelo' class="form-check-label"> Fecha del vuelo: </label>
 	      <select id='id_fecha_vuelo' name='fecha_vuelo' class="form-check-label">
-		{%for dia in dias%}
-		<option value={{dia}}>{{dia}}</option>
-		{%endfor%}
+          {%for dia in dias%}
+          <option value={{dia}}>{{dia}}</option>
+          {%endfor%}
 	      </select>
-	      <br>
-	      <label for='id_hora_vuelo' class="form-check-label"> Hora del vuelo: </label>
+        <br><br>
+	      <label for='id_hora_vuelo' class="form-check-label"> Hora del vuelo: (Ejemplo: 23:59) </label>
 
 	      <input type='text' name="hora_vuelo" step="any" required="" id="id_hora_vuelo" class="form-control" placeholder="HH:MM"> 
 

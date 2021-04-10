@@ -16,10 +16,53 @@
             <br>
             <form method='POST'>
               {% csrf_token %}<br>
-
-              
-              {{form.as_p}}
+              <p>
+                <label for="id_procedencia" class="form-check-label"> Ciudad de procedencia:</label> 
+                <input type="text" name="procedencia" maxlength="30" required="" id="id_procedencia" class="form-control">
+              </p>
               <br>
+              <p>
+                <label for="id_postal_procedencia" class="form-check-label">Codigo postal procedencia:</label> 
+                <input type="number" name="postal_procedencia" required="" id="id_postal_procedencia" class="form-control">
+              </p>
+
+              <br>
+              <p>
+                <label for="id_destino" class="form-check-label">Ciudad de destino:</label> 
+                <input type="text" name="destino" maxlength="30" required="" id="id_destino" class="form-control">
+              </p>
+              <br>
+              <p>
+                <label for="id_postal_destino" class="form-check-label">Codigo postal destino:</label> 
+                <input type="number" name="postal_destino" required="" id="id_postal_destino" class="form-control">
+              </p>
+              <br>
+              <p><label for="id_fecha_salida_day" class="form-check-label">Fecha de salida:</label> 
+               
+                <select id='id_fecha_vuelo' name='fecha_vuelo' class="form-check-label">
+                  {%for dia in dias%}
+                  <option value={{dia}}>{{dia}}</option>
+                  {%endfor%}
+                </select>
+
+              </p>
+              <br>
+              <p>
+                <label for="id_fecha_llegada_day" class="form-check-label">Fecha de llegada:</label> 
+                <select id='id_fecha_vuelo' name='fecha_vuelo' class="form-check-label">
+                    {%for dia in dias%}
+                    <option value={{dia}}>{{dia}}</option>
+                    {%endfor%}
+                </select>
+              </p>
+              <br>
+              <p>
+                <label for="id_requisitos" class="form-check-label">Requisitos:</label> 
+                <textarea name="requisitos" cols="40" rows="10" required="" id="id_requisitos"  class="form-control">
+
+                </textarea>
+              </p>
+          
               <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Registrar</button>
             </form>
           </div>

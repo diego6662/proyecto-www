@@ -70,9 +70,11 @@ def registrar_vuelo(request):
 
 def registrar_escala(request,id):
     form = Escalaform()
+    dias = [i for i in range(1,31)]
     context = {
             'id':id,
-            'form':form
+            'form':form,
+            'dias':dias
             }
     if request.method == 'POST':
         vuelo = Vuelo.objects.get(pk = id)
@@ -157,3 +159,6 @@ def editar_vuelo(request,id):
         return render(request,'vuelos/editarVuelo.html',context)
 
 
+
+def aerolineas(request):
+    return render(request,'vuelos/aerolineas.html')
