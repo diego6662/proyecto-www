@@ -4,7 +4,8 @@ from django.contrib.auth import logout,authenticate
 from django.http import  HttpResponse
 from forms import Loginform,  RegistroClienteform
 from django.contrib.auth.models import  User
-from .models import Cliente
+from .models import Cliente,Reserva
+from vuelos.models import Vuelo
 from django.contrib import messages
 #
 # Create your views here.
@@ -67,3 +68,17 @@ def registrar_usuario(request):
 
 def perfil(request):
     return render(request, 'vuelos/perfil.html')
+
+def reserva(request,vuelo):
+    usuario = Cliente.objects.get(usuario_dj = request.user)
+    vuelo =  Vuelo.objects.get(pk = vuelo)
+    if usuario.vuelos_disponibles > 0:
+        reserva = Reserva.objects.create(cliente = usuario,vuelo = vuelo)
+        usuario.vuelos_disponibles -= 1
+        usuario.save()
+        messages.success(request,'reserva realizada con exito')
+    else:
+        messages.success(request,'Ya utilizo todas sus reservas disponibles')
+
+    return redirect('/')
+

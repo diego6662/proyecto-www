@@ -3,7 +3,11 @@
 
 {% load static %}
 {% block content %}
-
+{% if messages %}
+    {% for message in messages %}
+      <script>alert("{{message|safe}}")</script>
+    {% endfor %}
+{% endif %}
 <title> Tuluayork </title>
       <div class="page-content-product">
          <div class="main-product">

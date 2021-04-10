@@ -9,4 +9,5 @@ urlpatterns = [
     path('logout', views.logout_user, name='logout'),
     path('signup', views.registrar_usuario, name='signup'),
     path('perfil', views.perfil, name='perfil'),
+    path('reserva-<str:vuelo>', views.reserva, name='reserva'),
 ]

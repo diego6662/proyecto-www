@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout,authenticate
 from django.contrib.auth.models import  User
@@ -60,7 +61,7 @@ def registrar_vuelo(request):
         aerolinea = Aerolinea.objects.get(pk = id_aero)
         fecha = request.POST['fecha_vuelo']
         hora = request.POST['hora_vuelo']
-        fecha = f'2020-04-{fecha} {hora}'
+        fecha = f'2021-04-{fecha} {hora}'
         vuelo = Vuelo(id_vuelo=id_vuelo,aerolinea=aerolinea,destino=destino,costo=costo,fecha=fecha)
         vuelo.save()
         return redirect('vuelos:registrar-escala',id_vuelo)
@@ -105,7 +106,7 @@ def modificar_aerolinea(request,id):
         return redirect('/')
     else:
         return render(request,'vuelos/modificarAero.html',context)
-
+@login_required
 def vista_vuelo(request,id):
     vuelo = Vuelo.objects.get(pk=id)
     escalas = Escala.objects.filter(vuelo = id)
