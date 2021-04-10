@@ -56,18 +56,19 @@
                                        {% if request.user.is_staff %}
                                        <div class="dropdown-menu">
 
-                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='' ">Opciones</button>
+                                          <a href="registrar-aerolinea"><button class="dropdown-item btn btn-secondary btn-block">Registrar Aerolinea</button></a>
+                                          <a href="registrar-vuelo"><button class="dropdown-item btn btn-secondary btn-block">Registrar Vuelo</button></a>
                                           <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='logout' ">Salir</button>
                                           
                                        </div> 
                                        {%  else  %} 
                                        <div class="dropdown-menu">
 
-                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='perfil' ">Opciones</button>
+                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='perfil' ">Perfil</button>
                                           <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='logout' ">Salir</button>
                                           
                                        </div>
-				       {%endif%}
+				                           {%endif%}
                                     </div>
                                                                 
                                 {%  else  %} 

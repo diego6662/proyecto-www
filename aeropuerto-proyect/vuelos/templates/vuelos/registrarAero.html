@@ -1,8 +1,4 @@
 {% extends 'vuelos/base.html' %}
-{% block nav %}
-   <li><a href="#">Iniciar Sesión</a></li>
-   <li><a class="custom-b" href="#">Registrarse</a></li>
-{% endblock %}
 {% block content %}
 <title>Registrar Aerolinea</title>
 <br>
@@ -19,8 +15,7 @@
               {% csrf_token %}
               <br>
               <label for="id_aerolinea" class="form-check-label"> Nombre de la nueva Aerolínea: </label><br>
-              <!-- <input type="text" name="aerolinea" maxlength="30" required="" id="id_aerolinea" class="form-control"> -->
-	            {{form.aerolinea}}
+               <input type="text" name="aerolinea" maxlength="30" required="" id="id_aerolinea" class="form-control"> 
               <br>
               <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Registrar</button>
             </form>

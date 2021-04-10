@@ -1,8 +1,4 @@
 {% extends 'vuelos/base.html' %}
-{% block nav %}
-   <li><a href="#">Iniciar Sesión</a></li>
-   <li><a class="custom-b" href="#">Registrarse</a></li>
-{% endblock %}
 {% block content %}
 <title>Modificar Aerolinea</title>
 <br>
@@ -20,7 +16,7 @@
               <br>
               <label for="id_aerolinea" class="form-check-label"> Nuevo nombre para la Aerolínea: </label>
               <!-- <input type="text" name="aerolinea" maxlength="30" required="" id="id_aerolinea" class="form-control"> -->
-	      {{form.aerolinea}}
+	            {{form.aerolinea}}
               <br>
               <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Modificar</button>
             </form>
