@@ -2,7 +2,35 @@
 {% extends 'vuelos/base.html' %}
 
 {% load static %}
+{%block nav%}
+                              <div class="btn-group">
+                                 <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    
+                                    <script> 
+				      alert("usuario: {{user}}" );
+                                     </script>
+                                    {% if user and not admin %}
+     
+                                    Cuenta cliente 
+                                    
+                                    
+                                    {% elif admin %}
+                                    
+                                    Cuenta admin
+                              
+                                    {% else %}
+                                     
+                                    Cuenta anonima
+                                    
+                                    {% endif %}
 
+                                 </button>
+                                 <div class="dropdown-menu">
+                                    <button class="dropdown-item btn btn-secondary btn-block" ><a href="login">Iniciar Sesión</a></button>
+                                    <button class="dropdown-item btn btn-secondary btn-block" ><a href="signup">Registrarse</a></button>
+                                 </div>
+                               </div>
+{%endblock%}
 {% block content %}
 
 <title> Tuluayork </title>
