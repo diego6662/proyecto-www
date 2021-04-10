@@ -76,7 +76,7 @@ def reserva(request,vuelo):
         reserva = Reserva.objects.create(cliente = usuario,vuelo = vuelo)
         usuario.vuelos_disponibles -= 1
         usuario.save()
-        messages.success(request,'reserva realizada con exito')
+        messages.success(request,'Reserva realizada con exito')
     else:
         messages.success(request,'Ya utilizo todas sus reservas disponibles')
 
