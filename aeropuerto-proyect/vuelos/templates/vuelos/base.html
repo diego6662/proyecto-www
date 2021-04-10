@@ -44,7 +44,51 @@
                            <div class="login-signup">
                               
                               {% block nav %}
+<<<<<<< HEAD
                               
+=======
+
+                                {% if user.is_authenticated %}
+                                    <div class="btn-group">
+                                       <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          {{user.username}}
+                                          {%if user.is_staff %}
+                                             <b> - ADMINISTRADOR </b>
+                                          {% endif %}
+                                       </button>
+
+                                       {% if user.is_staff %}
+                                       <div class="dropdown-menu">
+
+                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='' ">Opciones</button>
+                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='logout' ">Salir</button>
+                                          
+                                       </div> 
+                                       {%  else  %} 
+                                       <div class="dropdown-menu">
+
+                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='perfil' ">Opciones</button>
+                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='logout' ">Salir</button>
+                                          
+                                       </div> 
+                                    </div>
+                                    {% endif %}
+                                                                
+                                {%  else  %} 
+                                <div class="btn-group">
+                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       <h3>
+                                          Cuenta
+                                       </h3>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                       <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='login' ">Iniciar Sesión</button>
+                                       <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='signup' ">Registrarse</button>
+                                    </div>
+                                </div> 
+                                 {% endif %}
+                              </div>
+>>>>>>> 039a68d33871db42289dc2e87d12c3e5af3cc3ae
                               {% endblock %}
 			                   
                            </div>
