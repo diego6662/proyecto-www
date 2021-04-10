@@ -44,29 +44,45 @@
                            <div class="login-signup">
                               
                               {% block nav %}
-                              <div class="btn-group">
+
                                 {% if user.is_authenticated %}
-                                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  {{user.username}}
-                                  {%if user.is_staff %}
-                                  <b>ADMINISTRADOR</b>
-                                  {% endif %}
-                                 </button>
-                                 <div class="dropdown-menu">
-                                    <button class="dropdown-item btn btn-secondary btn-block" ><a href="#">Perfil</a></button>
-                                    <button class="dropdown-item btn btn-secondary btn-block" ><a href="logout">Salir</a></button>
-                                 </div>                                
+                                    <div class="btn-group">
+                                       <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          {{user.username}}
+                                          {%if user.is_staff %}
+                                             <b> - ADMINISTRADOR </b>
+                                          {% endif %}
+                                       </button>
+
+                                       {% if user.is_staff %}
+                                       <div class="dropdown-menu">
+
+                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='' ">Opciones</button>
+                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='logout' ">Salir</button>
+                                          
+                                       </div> 
+                                       {%  else  %} 
+                                       <div class="dropdown-menu">
+
+                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='perfil' ">Opciones</button>
+                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='logout' ">Salir</button>
+                                          
+                                       </div> 
+                                    </div>
+                                    {% endif %}
+                                                                
                                 {%  else  %} 
-                                <button class="btn btn-secondary btn-lg" ><a href="login">Iniciar Sesión</a></button>
-                                <button class="btn btn-secondary btn-lg " ><a href="signup">Registrarse</a></button>
-                                
-                                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Crear Cuenta
-                                 </button>
-                                 <div class="dropdown-menu">
-                                    <button class="dropdown-item btn btn-secondary btn-block" ><a href="login">Iniciar Sesión</a></button>
-                                    <button class="dropdown-item btn btn-secondary btn-block" ><a href="signup">Registrarse</a></button>
-                                 </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       <h3>
+                                          Cuenta
+                                       </h3>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                       <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='login' ">Iniciar Sesión</button>
+                                       <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='signup' ">Registrarse</button>
+                                    </div>
+                                </div> 
                                  {% endif %}
                               </div>
                               {% endblock %}
