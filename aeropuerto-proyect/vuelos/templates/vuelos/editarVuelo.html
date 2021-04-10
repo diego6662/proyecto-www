@@ -1,0 +1,63 @@
+{% extends 'vuelos/base.html' %}
+{% block content %}
+<title>Editar vuelo</title>
+<br>
+
+<div class="container mt-5 mb-5" >
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6" >
+        <div class="card px-5 py-5">
+          <div class='text-left'>
+            <br>
+            <h1> Editar vuelo</h1>
+            <br>
+            <form method='POST'>
+              {% csrf_token %}
+              <br>
+              <label for="id_id_aerolinea" class="form-check-label"> Aerolinea: </label><br>
+                
+              <!-- <select class="form-control select2"> -->
+              <!--   <option value="" selected="">---------</option> -->
+              <!-- </select> -->
+	
+	            {{form.id_aerolinea}}
+	            <br><br>
+
+              <label for="id_destino" class="form-check-label"> Destino: </label>
+              <input type="text" name="destino" maxlength="30" required="" id="id_destino"  class="form-control">
+	            
+	            <br>
+              <label for="id_costo" class="form-check-label"> Precio: </label>
+              <br>
+              <input type="number" name="costo" step="any" required="" id="id_costo" class="form-control"> 
+              <!-- <input type="text" name="id_costo" maxlength="30" required="" id="id_costo" class="form-control"> -->
+	      <br>
+	      <label for='id_fecha_vuelo' class="form-check-label"> Fecha del vuelo: </label>
+	      <select id='id_fecha_vuelo' name='fecha_vuelo' class="form-check-label">
+		{%for dia in dias%}
+		<option value={{dia}}>{{dia}}</option>
+		{%endfor%}
+	      </select>
+	      <br>
+	      <label for='id_hora_vuelo' class="form-check-label"> Hora del vuelo: </label>
+
+	      <input type='text' name="hora_vuelo" step="any" required="" id="id_hora_vuelo" class="form-control" placeholder="HH:MM"> 
+
+	            <br><br>
+              <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Registrar</button>
+            </form>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+
+
+
+
+
+{% endblock %}

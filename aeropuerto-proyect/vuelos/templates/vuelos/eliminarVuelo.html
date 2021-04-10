@@ -1,0 +1,16 @@
+{% extends 'vuelos/base.html' %}
+
+{% block content %}
+<title>Eliminar Vuelo</title>
+    <br>
+<div class='text-center ' id='uwu'>
+  <h1>Seguro que desea eliminar este vuelo</h1>
+  <form method="POST" enctype='multipart/form-data'>
+      {% csrf_token %}
+      <button type="submit" class="btn-danger">Eliminar</button>
+  </form>
+  <a href="{% url 'vuelos:index' %}">  
+    <button class="btn-primary">Cancelar</button>
+  </a>
+        </div>
+    {% endblock %}
