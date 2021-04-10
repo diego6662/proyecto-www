@@ -44,39 +44,31 @@
                            <div class="login-signup">
                               
                               {% block nav %}
-                              
-                              
-                              
-                              
-                              
-                              
                               <div class="btn-group">
-                                 <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    
-                                    <!--script> 
-                                       alert("usuario: " + Request.user );
-                                     </script-->
-                                    {% if user.is_authenticated %}
-                                    {{user.username}}
-                                    {% endif %}
-                                    {% if Request.user != undefined and true %}
-                                    Cuenta cliente 
-                                    {% elif Request.user == admin and Request.user != undefined %}
-                                    
-                                    Cuenta admin
-                              
-                                    {% else %}
-                                     
-                                    Cuenta anonima
-                                    
-                                    {% endif %}
-
+                                {% if user.is_authenticated %}
+                                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  {{user.username}}
+                                  {%if user.is_staff %}
+                                  <b>ADMINISTRADOR</b>
+                                  {% endif %}
+                                 </button>
+                                 <div class="dropdown-menu">
+                                    <button class="dropdown-item btn btn-secondary btn-block" ><a href="#">Perfil</a></button>
+                                    <button class="dropdown-item btn btn-secondary btn-block" ><a href="logout">Salir</a></button>
+                                 </div>                                
+                                {%  else  %} 
+                                <button class="btn btn-secondary btn-lg" ><a href="login">Iniciar Sesión</a></button>
+                                <button class="btn btn-secondary btn-lg " ><a href="signup">Registrarse</a></button>
+                                
+                                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Crear Cuenta
                                  </button>
                                  <div class="dropdown-menu">
                                     <button class="dropdown-item btn btn-secondary btn-block" ><a href="login">Iniciar Sesión</a></button>
                                     <button class="dropdown-item btn btn-secondary btn-block" ><a href="signup">Registrarse</a></button>
                                  </div>
-                               </div>
+                                 {% endif %}
+                              </div>
                               {% endblock %}
 			                   
                            </div>
