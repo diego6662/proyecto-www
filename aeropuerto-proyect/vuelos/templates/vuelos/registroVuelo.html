@@ -34,7 +34,18 @@
               <br>
               <input type="number" name="costo" step="any" required="" id="id_costo" class="form-control"> 
               <!-- <input type="text" name="id_costo" maxlength="30" required="" id="id_costo" class="form-control"> -->
-	            
+	      <br>
+	      <label for='id_fecha_vuelo' class="form-check-label"> Fecha del vuelo: </label>
+	      <select id='id_fecha_vuelo' name='fecha_vuelo' class="form-check-label">
+		{%for dia in dias%}
+		<option value={{dia}}>{{dia}}</option>
+		{%endfor%}
+	      </select>
+	      <br>
+	      <label for='id_hora_vuelo' class="form-check-label"> Hora del vuelo: </label>
+
+	      <input type='text' name="hora_vuelo" step="any" required="" id="id_hora_vuelo" class="form-control" placeholder="HH:MM"> 
+
 	            <br><br>
               <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Registrar</button>
             </form>

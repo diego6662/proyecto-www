@@ -8,7 +8,7 @@ class AerolineaAdmin(admin.ModelAdmin):
     readonly_fields = ['id']
     fields = ['id','nombre']
 class VueloAdmin(admin.ModelAdmin):
-    fields = ['id_vuelo','aerolinea','destino','costo']
+    fields = ['id_vuelo','aerolinea','destino','costo','fecha']
 
 class EscalaAdmin(admin.ModelAdmin):
     fields = ('vuelo','nombre_procedencia','cod_procedencia','nombre_destino','cod_destino','fecha_salida','fecha_llegada','requisitos')

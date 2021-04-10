@@ -12,6 +12,7 @@ urlpatterns = [
     path('registrar-escala-<str:id>', views.registrar_escala, name='registrar-escala'),
     path('modificar-aerolinea-<int:id>', views.modificar_aerolinea, name='modificar-aero'),
     path('vuelo-<str:id>', views.vista_vuelo, name='vista-vuelo'),
+    path('admin-vuelo-<str:id>', views.vuelo_admin, name='vuelo-admin'),
 
 ]
 

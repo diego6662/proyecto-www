@@ -58,17 +58,14 @@
 
 					 <a href="{% url 'vuelos:registrar-aerolinea'%}"><button class="dropdown-item btn btn-secondary btn-block">Registrar Aerolinea</button></a>
 					 <a href="{% url 'vuelos:registrar-vuelo'%}"><button class="dropdown-item btn btn-secondary btn-block">Registrar Vuelo</button></a>
-                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='logout' ">Salir</button>
-                                          
-                                       </div> 
                                        {%  else  %} 
                                        <div class="dropdown-menu">
 
                                           <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='perfil' ">Perfil</button>
-                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='logout' ">Salir</button>
                                           
+				      {%endif%}
+				      <a href="{% url 'clientes:logout' %}"><button class="dropdown-item btn btn-secondary btn-block"  >Salir</button></a>
                                        </div>
-				                           {%endif%}
                                     </div>
                                                                 
                                 {%  else  %} 
