@@ -46,9 +46,11 @@ def registrar_aerolinea(request):
 def registrar_vuelo(request):
     form = Vueloform()
     aerolineas = Aerolinea.objects.all()
+    dias = [i for i in range(1,31)]
     context = {
             'form':form,
-            'aero':aerolineas
+            'aero':aerolineas,
+            'dias':dias
             }
     if request.method == 'POST':
         id_vuelo = request.POST['id_vuelo']                
@@ -56,7 +58,10 @@ def registrar_vuelo(request):
         destino = request.POST['destino']
         costo = float(request.POST['costo'])
         aerolinea = Aerolinea.objects.get(pk = id_aero)
-        vuelo = Vuelo(id_vuelo=id_vuelo,aerolinea=aerolinea,destino=destino,costo=costo)
+        fecha = request.POST['fecha_vuelo']
+        hora = request.POST['hora_vuelo']
+        fecha = f'2020-04-{fecha} {hora}'
+        vuelo = Vuelo(id_vuelo=id_vuelo,aerolinea=aerolinea,destino=destino,costo=costo,fecha=fecha)
         vuelo.save()
         return redirect('vuelos:registrar-escala',id_vuelo)
     else:
@@ -64,9 +69,11 @@ def registrar_vuelo(request):
 
 def registrar_escala(request,id):
     form = Escalaform()
+    dias = [i for i in range(1,31)]
     context = {
             'id':id,
-            'form':form
+            'form':form,
+            'dias':dias
             }
     if request.method == 'POST':
         vuelo = Vuelo.objects.get(pk = id)
@@ -107,3 +114,47 @@ def vista_vuelo(request,id):
             'escalas':escalas
             }
     return render(request,'vuelos/vuelo.html',context)
+
+def vuelo_admin(request,id):
+    vuelo = Vuelo.objects.get(pk=id)
+    escalas = Escala.objects.filter(vuelo = id)
+    context = {
+            'vuelo':vuelo,
+            'escalas':escalas
+            }
+    return render(request,'vuelos/vuelo_admin.html',context)
+
+def eliminar_vuelo(request,id):
+    if request.method == 'POST':
+        vuelo = Vuelo.objects.get(pk=id)
+        vuelo.delete()
+        return redirect('/')
+    else:
+        return render(request, 'vuelos/eliminarVuelo.html')
+
+def editar_vuelo(request,id):
+    form = Vueloform()
+    aerolineas = Aerolinea.objects.all()
+    dias = [i for i in range(1,31)]
+    context = {
+            'form':form,
+            'aero':aerolineas,
+            'dias':dias
+            }
+    if request.method == 'POST':
+        id_aero = int(request.POST['id_aerolinea'])
+        destino = request.POST['destino']
+        costo = float(request.POST['costo'])
+        aerolinea = Aerolinea.objects.get(pk = id_aero)
+        fecha = request.POST['fecha_vuelo']
+        hora = request.POST['hora_vuelo']
+        fecha = f'2020-04-{fecha} {hora}'
+        vuelo = Vuelo(id_vuelo=id,aerolinea=aerolinea,destino=destino,costo=costo,fecha=fecha)
+        vuelo.save()
+        escalas = Escala.objects.filter(vuelo=id)
+        escalas.delete()
+        return redirect('vuelos:registrar-escala',id)
+    else:
+        return render(request,'vuelos/editarVuelo.html',context)
+
+

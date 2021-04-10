@@ -33,8 +33,12 @@
               {%for vuelo in vuelos%}
                <!-- <div class="row clearfix"> -->
                   <div class="col-lg-3 col-sm-6 col-md-3">
+		    {%if admin%}
+		    <a href="{% url 'vuelos:vuelo-admin' vuelo.id_vuelo %}">
+		    {%else%}
 		    <a href="{% url 'vuelos:vista-vuelo' vuelo.id_vuelo %}">
-                        <div class="box-img">
+                    {% endif %}  
+		      <div class="box-img">
 			  <h4>{{vuelo.destino}}</h4>
                            <img src="{% static 'vuelos/images/product/avion.png' %}" alt="imagendelaciudad" />
 			   <h5>{{vuelo.id_vuelo}}</h5>

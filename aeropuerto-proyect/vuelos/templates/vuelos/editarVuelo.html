@@ -1,6 +1,6 @@
 {% extends 'vuelos/base.html' %}
 {% block content %}
-<title>Registrar vuelo</title>
+<title>Editar vuelo</title>
 <br>
 
 <div class="container mt-5 mb-5" >
@@ -9,14 +9,11 @@
         <div class="card px-5 py-5">
           <div class='text-left'>
             <br>
-            <h1> Registrar vuelo</h1>
+            <h1> Editar vuelo</h1>
             <br>
             <form method='POST'>
               {% csrf_token %}
               <br>
-              <label for="id_id_vuelo" class="form-check-label"> Código de vuelo: </label><br>
-              <input type="text" name="id_vuelo" maxlength="30" required="" id="id_id_vuelo" class="form-control">
-	            <br>
               <label for="id_id_aerolinea" class="form-check-label"> Aerolinea: </label><br>
                 
               <!-- <select class="form-control select2"> -->
@@ -37,12 +34,12 @@
 	      <br>
 	      <label for='id_fecha_vuelo' class="form-check-label"> Fecha del vuelo: </label>
 	      <select id='id_fecha_vuelo' name='fecha_vuelo' class="form-check-label">
-          {%for dia in dias%}
-          <option value={{dia}}>{{dia}}</option>
-          {%endfor%}
+		{%for dia in dias%}
+		<option value={{dia}}>{{dia}}</option>
+		{%endfor%}
 	      </select>
-        <br><br>
-	      <label for='id_hora_vuelo' class="form-check-label"> Hora del vuelo: (Ejemplo: 23:59) </label>
+	      <br>
+	      <label for='id_hora_vuelo' class="form-check-label"> Hora del vuelo: </label>
 
 	      <input type='text' name="hora_vuelo" step="any" required="" id="id_hora_vuelo" class="form-control" placeholder="HH:MM"> 
 

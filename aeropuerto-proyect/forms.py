@@ -160,7 +160,7 @@ class Vueloform(forms.Form):
     id_aerolinea = forms.ModelChoiceField(Aerolinea.objects.all())
     destino = forms.CharField(max_length=30,label='Destino')
     costo = forms.FloatField(label='Precio')
-
+    fecha_vuelo = forms.DateField(label='Fecha de vuelo')
 
 class Escalaform(forms.Form):
 #    id_vuelo = forms.CharField(max_length=30, label='Codigo del vuelo',)
