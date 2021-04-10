@@ -12,8 +12,14 @@ from .models import Aerolinea, Vuelo, Escala
 
 def index(request):
     vuelos = Vuelo.objects.all()
+    user = request.User
+    admin = user.is_staff
+    if str(user) == 'AnonymousUser' :
+        user = None
     context = {
             'vuelos':vuelos,
+            'user':user,
+            'admin':admin,
             }
     return render(request,'vuelos/index.html',context)
 
