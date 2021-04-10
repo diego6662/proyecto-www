@@ -56,7 +56,7 @@
                                        {% if request.user.is_staff %}
                                        <div class="dropdown-menu">
 
-                                          <a href="#"><button class="dropdown-item btn btn-secondary btn-block">Ver Aerolinea</button></a>
+                                          <a href="{% url 'vuelos:aerolineas'%}"><button class="dropdown-item btn btn-secondary btn-block">Ver Aerolinea</button></a>
                                           <a href="{% url 'vuelos:registrar-vuelo'%}"><button class="dropdown-item btn btn-secondary btn-block">Registrar Vuelo</button></a>
                                        {%  else  %} 
                                        <div class="dropdown-menu">

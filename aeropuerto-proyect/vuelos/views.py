@@ -158,3 +158,6 @@ def editar_vuelo(request,id):
         return render(request,'vuelos/editarVuelo.html',context)
 
 
+
+def aerolineas(request):
+    return render(request,'vuelos/aerolineas.html')

@@ -1,0 +1,37 @@
+{% extends 'vuelos/base.html' %}
+
+{% load static %}
+{% block content %}
+<title> Iniciar Sesion </title>
+<br>
+<div class="container mt-5 mb-5" >
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6" >
+        <div class="card px-5 py-5">
+          <div class="form-input"><br>
+            <h1> Aerolineas Registradas:</h1>
+            <br>
+            <ul>
+                <a> Aviaca</a><br>
+                <a> Aviaca</a><br>
+                <a> Aviaca</a><br>
+                <a> Aviaca</a><br>
+                   
+                
+            </ul>
+            <br><br>
+            <a href="{% url 'vuelos:registrar-aerolinea' %}">
+                <button type='submit' class="btn-success btn btn-primary mr-4 signup">Registrar aerolinea</button>
+            </a>
+                                      
+
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}
