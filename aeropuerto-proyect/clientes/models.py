@@ -18,5 +18,5 @@ class Reserva(models.Model):
     vuelo = models.ForeignKey(Vuelo,on_delete=models.CASCADE,null=False,blank=False, verbose_name="vuelo" )
 
     def __str__(self):
-        return str(Cliente) + str(vuelo)
+        return f'{self.cliente.cc} {self.vuelo.id_vuelo}' 
 
