@@ -12,7 +12,7 @@ from .models import Aerolinea, Vuelo, Escala
 
 def index(request):
     vuelos = Vuelo.objects.all()
-    user = request.User
+    user = request.user
     admin = user.is_staff
     if str(user) == 'AnonymousUser' :
         user = None

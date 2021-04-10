@@ -53,14 +53,14 @@
                               <div class="btn-group">
                                  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     
-                                    <script> 
+                                    <!--script> 
                                        alert("usuario: " + Request.user );
-                                     </script>
+                                     </script-->
+                                    {% if user.is_authenticated %}
+                                    {{user.username}}
+                                    {% endif %}
                                     {% if Request.user != undefined and true %}
-     
                                     Cuenta cliente 
-                                    
-                                    
                                     {% elif Request.user == admin and Request.user != undefined %}
                                     
                                     Cuenta admin
