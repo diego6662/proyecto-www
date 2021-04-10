@@ -43,18 +43,17 @@
                         <div class="login-sr">
                            <div class="login-signup">
                               
-                              {% block nav %}
 
-                                {% if user.is_authenticated %}
+                                {% if request.user.is_authenticated %}
                                     <div class="btn-group">
                                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                          {{user.username}}
+                                          {{request.user.username}}
                                           {%if user.is_staff %}
                                              <b> - ADMINISTRADOR </b>
                                           {% endif %}
                                        </button>
 
-                                       {% if user.is_staff %}
+                                       {% if request.user.is_staff %}
                                        <div class="dropdown-menu">
 
                                           <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='' ">Opciones</button>
@@ -67,9 +66,9 @@
                                           <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='perfil' ">Opciones</button>
                                           <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='logout' ">Salir</button>
                                           
-                                       </div> 
+                                       </div>
+				       {%endif%}
                                     </div>
-                                    {% endif %}
                                                                 
                                 {%  else  %} 
                                 <div class="btn-group">
@@ -85,7 +84,6 @@
                                 </div> 
                                  {% endif %}
                               </div>
-                              {% endblock %}
 			                   
                            </div>
                         </div>
