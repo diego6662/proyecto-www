@@ -175,15 +175,15 @@ def eliminar_aerolinea(request,id):
 
 def registrar_ciudad(request):
     form = CiudadForm()
-    ciudad = Ciudades.objects.all()
     context = {
             'form':form,
-            'ciudad':ciudad
             }
     if request.method == 'POST':
-        postal = request.POST('postal')
-        nombre = request.POST('nombre')
-        foto = request.POST('foto')
+        form = CiudadForm(request.POST,request.FILES)
+        postal = request.POST['postal']
+        nombre = request.POST['nombre']
+        foto = request.FILES['foto']
+        ciudad = Ciudades(postal=postal, nombre=nombre,foto=foto)
         ciudad.save()
         return redirect('/')
     else:

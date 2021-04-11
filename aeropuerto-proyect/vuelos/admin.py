@@ -16,4 +16,5 @@ class EscalaAdmin(admin.ModelAdmin):
 admin.site.register(Aerolinea,AerolineaAdmin)
 admin.site.register(Vuelo,VueloAdmin)
 admin.site.register(Escala,EscalaAdmin)
+admin.site.register(Ciudades,)
 

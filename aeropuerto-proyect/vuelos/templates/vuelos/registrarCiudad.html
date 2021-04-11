@@ -11,7 +11,8 @@
             <br>
             <h1> Registrar Ciudad</h1>
             <br>
-            <form method='POST'><br>
+            <form enctype="multipart/form-data" method='POST'><br>
+
               {% csrf_token %}
               
               {{form.as_p}}

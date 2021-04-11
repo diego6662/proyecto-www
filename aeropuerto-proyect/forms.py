@@ -179,8 +179,6 @@ class Escalaform(forms.Form):
 
 
 class CiudadForm(forms.Form):
-    postal = forms.IntegerField(label='Codigo postal')
-    nombre = forms.CharField(max_length=30, label='Ciudad de procedencia')
-    class Meta:
-        model = Ciudades
-        fields = ['foto']
+    postal = forms.IntegerField(label = 'Codigo postal')
+    nombre = forms.CharField(max_length=30,label='Nombre de la ciudad')
+    foto = forms.ImageField(label='Foto de la ciudad')
