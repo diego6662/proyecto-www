@@ -188,3 +188,20 @@ def registrar_ciudad(request):
         return redirect('/')
     else:
         return render(request,'vuelos/registrarCiudad.html',context)
+
+def modificar_ciudad(request,id):
+    form = CiudadForm()
+    context = {
+            'form':form,
+            'id':id
+            }
+    if request.method == 'POST':
+        ciudad = Ciudades.objects.get(pk=id)
+        nombre = request.POST['ciudad']
+        postal = request.POST['postal']
+        ciudad.nombre = nombre
+        ciudad.postal = postal
+        ciudad.save()
+        return redirect('/')
+    else:
+        return render(request,'vuelos/modificarCiudad.html',context)
