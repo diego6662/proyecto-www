@@ -7,8 +7,8 @@ from forms import Loginform, Aerolineaform, RegistroClienteform
 from .models import Aerolinea
 from django.http import  HttpResponse
 from django.contrib import messages
-from forms import Loginform, Aerolineaform, Vueloform, Escalaform 
-from .models import Aerolinea, Vuelo, Escala
+from forms import Loginform, Aerolineaform, Vueloform, Escalaform, CiudadForm
+from .models import Aerolinea, Vuelo, Escala, Ciudades
 # Create your views here.
 
 def index(request):
@@ -172,3 +172,39 @@ def eliminar_aerolinea(request,id):
     aerolinea = Aerolinea.objects.get(pk=id)
     aerolinea.delete()
     return redirect('/')
+
+def registrar_ciudad(request):
+    form = CiudadForm()
+    context = {
+            'form':form,
+            }
+    if request.method == 'POST':
+        form = CiudadForm(request.POST,request.FILES)
+        postal = request.POST['postal']
+        nombre = request.POST['nombre']
+        foto = request.FILES['foto']
+        ciudad = Ciudades(postal=postal, nombre=nombre,foto=foto)
+        ciudad.save()
+        return redirect('/')
+    else:
+        return render(request,'vuelos/registrarCiudad.html',context)
+<<<<<<< HEAD
+=======
+
+def modificar_ciudad(request,id):
+    form = CiudadForm()
+    context = {
+            'form':form,
+            'id':id
+            }
+    if request.method == 'POST':
+        ciudad = Ciudades.objects.get(pk=id)
+        nombre = request.POST['ciudad']
+        postal = request.POST['postal']
+        ciudad.nombre = nombre
+        ciudad.postal = postal
+        ciudad.save()
+        return redirect('/')
+    else:
+        return render(request,'vuelos/modificarCiudad.html',context)
+>>>>>>> eb9872e5673a5c0e11a21f4a6d35b5a7ac22680c

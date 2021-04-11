@@ -4,7 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError 
 
-from vuelos.models import Aerolinea
+from vuelos.models import Aerolinea, Ciudades
+
 
 # -*- coding:utf-8 -*-
 from django.utils.safestring import mark_safe
@@ -177,3 +178,7 @@ class Escalaform(forms.Form):
     requisitos = forms.CharField(widget=forms.Textarea, label='Requisitos')
 
 
+class CiudadForm(forms.Form):
+    postal = forms.IntegerField(label = 'Codigo postal')
+    nombre = forms.CharField(max_length=30,label='Nombre de la ciudad')
+    foto = forms.ImageField(label='Foto de la ciudad')
