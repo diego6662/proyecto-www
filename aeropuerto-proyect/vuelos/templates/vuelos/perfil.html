@@ -21,18 +21,18 @@
                   <div class="profile-pro-left">
                      <div class="left-profile-box-m">
                         <div class="pro-img">
-                           <img src="{% static 'vuelos/images/150x150.png' %}" alt="#" />
+			  <img src="{{usuario.image_perfil.url }}" alt="#" />
                         </div>
                         <div class="pof-text">
                            <h3>*Nombre completo*
                               <div class="check-box"></div>
                            </h3>
                         </div>
-                        <span>CC: </span>
+			<span>CC: {{usuario.cc}}</span>
                         <br>
-                        <span>Nombre de usuario: </span>
+			<span>Nombre de usuario:{{usuario.usuario_dj.username}} </span>
                         <br>
-                        <span>Email: </span>
+			<span>Email: {{usuario.usuario_dj.email}}</span>
                         <br>
                         
                      </div>
@@ -43,7 +43,7 @@
                      <div class="panel with-nav-tabs panel-default">
                         <div class="panel-heading clearfix">
                            <ul class="nav nav-tabs pull-left">
-                              <li class="active"><a data-toggle="tab">Reservas disponibles: <span>*2*</span></a></li>
+			     <li class="active"><a data-toggle="tab">Reservas disponibles: <span>{{usuario.vuelos_disponibles}}</span></a></li>
                            </ul>
                            <ul class="nav nav-tabs pull-right">
                               <li class="active"><a href="#" data-toggle="tab">Editar perfil</a></li>

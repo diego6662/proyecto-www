@@ -67,7 +67,11 @@ def registrar_usuario(request):
         return render(request,'vuelos/signup.html',{'form':form})
 
 def perfil(request):
-    return render(request, 'vuelos/perfil.html')
+    usuario = Cliente.objects.get(usuario_dj = request.user)
+    context = {
+            'usuario':usuario
+            }
+    return render(request, 'vuelos/perfil.html',context)
 
 def reserva(request,vuelo):
     usuario = Cliente.objects.get(usuario_dj = request.user)
