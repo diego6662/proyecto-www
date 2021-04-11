@@ -27,8 +27,7 @@
 	            <br><br>
 
               <label for="id_destino" class="form-check-label"> Destino: </label>
-              <input type="text" name="destino" maxlength="30" required="" id="id_destino"  class="form-control">
-	            
+	      {{form.destino}} 
 	            <br>
               <label for="id_costo" class="form-check-label"> Precio: </label>
               <br>
@@ -45,7 +44,10 @@
 	      <label for='id_hora_vuelo' class="form-check-label"> Hora del vuelo: (Ejemplo: 23:59) </label>
 
 	      <input type='text' name="hora_vuelo" step="any" required="" id="id_hora_vuelo" class="form-control" placeholder="HH:MM"> 
+	<br>
 
+	      <label for='id_requisitos' class="form-check-label"> Requisitos:  </label>
+	      {{form.requisitos}}
 	            <br><br>
               <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Registrar</button>
             </form>

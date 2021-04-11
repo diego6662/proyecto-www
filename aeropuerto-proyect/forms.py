@@ -29,7 +29,7 @@ class RegistroClienteform(forms.Form):
     apellido = forms.CharField(max_length=20,required=True, label='Apellido')
     username = forms.CharField(max_length=20,required=True )
     email = forms.EmailField(max_length=30,required=True ,label='Email')
-    password1 = forms.CharField(widget=forms.PasswordInput(),label="Contraseña", help_text="Debe contener al menos 8 caracteres, un caracter especial y una mayusculo")
+    password1 = forms.CharField(widget=forms.PasswordInput(),label="Contraseña", help_text="Debe contener al menos 8 caracteres, un caracter especial y una mayuscula")
     password2 = forms.CharField(widget=forms.PasswordInput(),label="Confirmar Contraseña", help_text ="La contraseña de nuevo")
 
     # CAMBIOS EN EL CSS
@@ -56,7 +56,7 @@ class RegistroClienteform(forms.Form):
         elif psswrd1.isalpha():
             raise ValidationError("La contraseñas debe tener al menos un caracter especial")
         elif psswrd1.lower() == psswrd1:
-            raise ValidationError("La contraseña debe tneer al menos una mayuscula")
+            raise ValidationError("La contraseña debe tener al menos una mayuscula")
         return psswrd2
 
     def clean_cc(self):
@@ -158,14 +158,16 @@ class RegistroClienteform(forms.Form):
 
 class Aerolineaform(forms.Form):
     aerolinea = forms.CharField(max_length=20, label='Nombre aerolinea')
-
+ 
 
 class Vueloform(forms.Form):
     id_vuelo = forms.CharField(max_length=30, label='Codigo del vuelo')
     id_aerolinea = forms.ModelChoiceField(Aerolinea.objects.all())
-    destino = forms.CharField(max_length=30,label='Destino')
+    destino = forms.ModelChoiceField(Ciudades.objects.all())
     costo = forms.FloatField(label='Precio')
     fecha_vuelo = forms.DateField(label='Fecha de vuelo')
+    requisitos = forms.CharField(widget=forms.Textarea, label='Requisitos')
+    
 
 class Escalaform(forms.Form):
 #    id_vuelo = forms.CharField(max_length=30, label='Codigo del vuelo',)
@@ -182,3 +184,9 @@ class CiudadForm(forms.Form):
     postal = forms.IntegerField(label = 'Codigo postal')
     nombre = forms.CharField(max_length=30,label='Nombre de la ciudad')
     foto = forms.ImageField(label='Foto de la ciudad')
+
+class editar_perfilForm(forms.Form):
+    nombre = forms.CharField(max_length=30,label='Nombre')
+    apellido = forms.CharField(max_length=30,label='Apellido')
+    email = forms.EmailField(label='Email')
+    foto = forms.ImageField(label='Foto de perfil')

@@ -3,7 +3,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout,authenticate
 from django.http import  HttpResponse
 from django.contrib.auth.decorators import  login_required
-from forms import Loginform,  RegistroClienteform
+from forms import Loginform,  RegistroClienteform, editar_perfilForm
 from django.contrib.auth.models import  User
 from .models import Cliente,Reserva
 from vuelos.models import Vuelo
@@ -72,8 +72,10 @@ def registrar_usuario(request):
 @login_required
 def perfil(request):
     usuario = Cliente.objects.get(usuario_dj = request.user)
+    reservas = Reserva.objects.filter(cliente = usuario)
     context = {
-            'usuario':usuario
+            'usuario':usuario,
+            'reservas':reservas
             }
     return render(request, 'vuelos/perfil.html',context)
 
@@ -162,4 +164,29 @@ def eliminar_cliente(request, cliente_id):
         usrCl.delete()
 
     return redirect('clientes:usuarios_admin')
-    
+   
+def cancelar_reserva(request,id):
+    reserva = Reserva.objects.get(pk=id)
+    reserva.delete()
+    usuario = Cliente.objects.get(usuario_dj=request.user)
+    usuario.vuelos_disponibles += 1
+    usuario.save()
+    return redirect('clientes:perfil')
+
+def editar_perfil(request):
+    form = editar_perfilForm()
+    context = {
+            'form':form
+            }
+    if request.method == 'POST':
+        usuario = Cliente.objects.get(usuario_dj = request.user)
+        usuario.image_perfil = request.FILES['foto']
+        usuario.usuario_dj.email = request.POST['email']
+        usuario.usuario_dj.first_name = request.POST['nombre']
+        usuario.usuario_dj.last_name = request.POST['apellido']
+        usuario.usuario_dj.save()
+        usuario.save()
+        return redirect('clientes:perfil')
+
+
+    return render(request,'vuelos/modificarPerfil.html',context)

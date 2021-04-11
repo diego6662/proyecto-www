@@ -50,7 +50,7 @@
 			     <li class="active"><a data-toggle="tab">Reservas disponibles: <span>{{usuario.vuelos_disponibles}}</span></a></li>
                            </ul>
                            <ul class="nav nav-tabs pull-right">
-                              <li class="active"><a href="#" data-toggle="tab">Editar perfil</a></li>
+			     <li class="active"><a href="{% url 'clientes:editar_perfil' %}" >Editar perfil</a></li>
                            </ul>
                            
                         </div>
@@ -58,41 +58,25 @@
                            <div class="tab-content">
                               <div class="tab-pane fade in active" id="tab1default">
                                  <div class="product-box-main row">
-                                    <div class="col-md-4 col-sm-6">
+				   {%for reserva in reservas%} 
+				   <div class="col-md-4 col-sm-6">
                                        <div class="small-box-c">
                                           <div class="small-img-b">
-                                             <img src="{% static 'vuelos/images/product/bogota.jpeg' %}" alt="#" />
+                                             <img src="{{ reserva.vuelo.destino.foto.url }}" alt="#" />
                                           </div>
                                           <div class="dit-t clearfix">
                                              <div class="left-ti">
-                                                <h4>Bogotá</h4>
-                                                <p>Abril 8 </p>
+                                                <h4>{{ reserva.vuelo.destino.nombre }}</h4>
+						<p>{{ reserva.vuelo.fecha}} </p>
                                              </div>
-                                             <a href="#" tabindex="0">$50000</a>
+                                             <a href="#" tabindex="0">{{ reserva.vuelo.costo}}</a>
                                           </div>
                                           <div class="prod-btn">
-                                             <a href="#"><i class="fa fa-star" aria-hidden="true"></i> Cancelar</a>
+					    <a href="{% url 'clientes:cancelar_reserva' reserva.id%}"><i class="fa fa-star" aria-hidden="true"></i> Cancelar</a>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <img src="{% static 'vuelos/images/product/cali.jpg' %}" alt="cali" />
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <h4>Cali</h4>
-                                                <p>Abril 15</p>
-                                             </div>
-                                             <a href="#" tabindex="0">$20000</a>
-                                          </div>
-                                          <div class="prod-btn">
-                                             <a href="#"><i class="fa fa-star" aria-hidden="true"></i> Cancelar</a>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    
+                                    {%endfor%}                                  
                                  </div>
                                  
                               </div>

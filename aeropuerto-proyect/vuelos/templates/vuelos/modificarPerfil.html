@@ -9,20 +9,16 @@
         <div class="card px-5 py-5">
           <div class='text-left'>
             <br>
-            <h1> Modificar Aerolinea</h1>
             <br>
-            <form method='POST'>
+            <form enctype="multipart/form-data" method='POST'>
               {% csrf_token %}
               <br>
-              <label for="id_aerolinea" class="form-check-label"> Nuevo nombre para la Aerolínea: </label>
-              <input type="text" name="aerolinea" maxlength="20" required="" id="id_aerolinea" class="form-control">
-              
-              <br>
+	      {{form.as_p}}
+	      <br>
               <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Modificar</button>
               
             </form>
 	    <br>
-              <a href="{% url 'vuelos:eliminar-aerolinea' id%}" style="text-decoration:none" ><button type='submit' class='btn-danger btn btn-primary mr-4 signup'>Eliminar</button></a>
           </div>
           <br>
         </div>

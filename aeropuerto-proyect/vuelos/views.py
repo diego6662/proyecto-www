@@ -56,13 +56,15 @@ def registrar_vuelo(request):
     if request.method == 'POST':
         id_vuelo = request.POST['id_vuelo']                
         id_aero = int(request.POST['id_aerolinea'])
-        destino = request.POST['destino']
+        destino = int(request.POST['destino'])
         costo = float(request.POST['costo'])
         aerolinea = Aerolinea.objects.get(pk = id_aero)
+        destino = Ciudades.objects.get(pk = destino)
+        requisitos = request.POST['requisitos']
         fecha = request.POST['fecha_vuelo']
         hora = request.POST['hora_vuelo']
         fecha = f'2021-04-{fecha} {hora}'
-        vuelo = Vuelo(id_vuelo=id_vuelo,aerolinea=aerolinea,destino=destino,costo=costo,fecha=fecha)
+        vuelo = Vuelo(id_vuelo=id_vuelo,aerolinea=aerolinea,destino=destino,costo=costo,fecha=fecha,requisitos=requisitos)
         vuelo.save()
         return redirect('vuelos:registrar-escala',id_vuelo)
     else:
@@ -149,9 +151,12 @@ def editar_vuelo(request,id):
         costo = float(request.POST['costo'])
         aerolinea = Aerolinea.objects.get(pk = id_aero)
         fecha = request.POST['fecha_vuelo']
+        destino = int(request.POST['destino'])
+        destino = Ciudades.objects.get(pk=destino)
+        requisitos = request.POST['requisitos']
         hora = request.POST['hora_vuelo']
         fecha = f'2020-04-{fecha} {hora}'
-        vuelo = Vuelo(id_vuelo=id,aerolinea=aerolinea,destino=destino,costo=costo,fecha=fecha)
+        vuelo = Vuelo(id_vuelo=id,aerolinea=aerolinea,destino=destino,costo=costo,fecha=fecha,requisitos=requisitos)
         vuelo.save()
         escalas = Escala.objects.filter(vuelo=id)
         escalas.delete()

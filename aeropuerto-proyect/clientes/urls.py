@@ -13,4 +13,6 @@ urlpatterns = [
     path('usuarioAdmin/', views.usuarios_admin, name='usuarios_admin'),
     path('clienteAdmin-<int:cliente_id>/', views.cliente_perfil_admin, name='clientePerfilAdmin'),
     path('eliminarCliente-<int:cliente_id>/', views.eliminar_cliente, name='eliminarCliente'),
+    path('cancelar-reserva-<int:id>', views.cancelar_reserva, name='cancelar_reserva'),
+    path('editar-perfil', views.editar_perfil, name='editar_perfil'),
 ]
