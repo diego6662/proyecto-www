@@ -10,4 +10,7 @@ urlpatterns = [
     path('signup', views.registrar_usuario, name='signup'),
     path('perfil', views.perfil, name='perfil'),
     path('reserva-<str:vuelo>', views.reserva, name='reserva'),
+    path('usuarioAdmin/', views.usuarios_admin, name='usuarios_admin'),
+    path('clienteAdmin-<int:cliente_id>/', views.cliente_perfil_admin, name='clientePerfilAdmin'),
+    path('eliminarCliente-<int:cliente_id>/', views.eliminar_cliente, name='eliminarCliente'),
 ]
