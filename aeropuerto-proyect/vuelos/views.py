@@ -7,8 +7,8 @@ from forms import Loginform, Aerolineaform, RegistroClienteform
 from .models import Aerolinea
 from django.http import  HttpResponse
 from django.contrib import messages
-from forms import Loginform, Aerolineaform, Vueloform, Escalaform 
-from .models import Aerolinea, Vuelo, Escala
+from forms import Loginform, Aerolineaform, Vueloform, Escalaform, CiudadForm
+from .models import Aerolinea, Vuelo, Escala, Ciudades
 # Create your views here.
 
 def index(request):
@@ -172,3 +172,19 @@ def eliminar_aerolinea(request,id):
     aerolinea = Aerolinea.objects.get(pk=id)
     aerolinea.delete()
     return redirect('/')
+
+def registrar_ciudad(request):
+    form = CiudadForm()
+    ciudad = Ciudades.objects.all()
+    context = {
+            'form':form,
+            'ciudad':ciudad
+            }
+    if request.method == 'POST':
+        postal = request.POST('postal')
+        nombre = request.POST('nombre')
+        foto = request.POST('foto')
+        ciudad.save()
+        return redirect('/')
+    else:
+        return render(request,'vuelos/registrarCiudad.html',context)
