@@ -20,7 +20,7 @@ def login(request):
     else:
         user = request.POST['usuario']
         contrasena = request.POST['contrasena']
-        auth = authenticate(request,username=user,password=contrasena)
+        auth = authenticate(request,username=user,password=contrasena)  
         if auth:
             auth_login(request,auth)
             return redirect('/')
@@ -33,40 +33,40 @@ def logout_user(request):
     return redirect('/')
 
 def registrar_usuario(request):
-    form = RegistroClienteform()
-    context = {
-            'form':form
-            }
-    if request.method == 'POST':
-        p1 = request.POST['password1']
-        p2 = request.POST['password2']
-        if p1 == p2:
-            try:
-                cce = int(request.POST['cc'])
-                user = request.POST['username']
-                email = request.POST['email']
-                nombre = request.POST['nombre']
-                apellido = request.POST['apellido']
-                usuario = User.objects.create_user(username = user, email = email, first_name = nombre, last_name=apellido,password = p1)
-                usuario.save()
-            except :
-                context['error'] = 'El usuario ya existe'
-                return render(request,'vuelos/signup.html',context)
-            try:
-                usuario = User.objects.get(username=user)
-                obj,create = Cliente.objects.get_or_create(cc=cce,vuelos_disponibles=2, usuario_dj = usuario)
-                #obj.save()
-                messages.success(request,'Usuario creado con exito')
-                return redirect('clientes:login')
-            except :
-                usuario.delete()
-                context['error'] = 'El usuario ya existe'
-                return render(request,'vuelos/signup.html',context)
 
+    if request.method == 'POST':
+        # si trae post se carga el formulario con 
+        form = RegistroClienteform(request.POST)
+
+        # validoacion del formulario
+        if form.is_valid():
+            # cera un objeto del modelo
+            usr = User()
+            # se carga con la data
+            usr.first_name = request.POST['nombre']
+            usr.last_name  = request.POST['apellido']
+            usr.username   = request.POST['username']
+            usr.email      = request.POST['email']
+            usr.set_password(request.POST['password1'])
+            # se guarda en la base de datos
+            usr.save()
+
+            # se crea un objeto cliente
+            clt = Cliente()
+            clt.cc = int(request.POST['cc'])
+            clt.vuelos_disponibles = 2
+            clt.usuario_dj = usr
+
+            # guardar cliente
+            clt.save()
+
+            #redirecion al login
+            return redirect('clientes:login')
         else:
-            context['error'] = 'Las contraseñas no coinciden'
-            return render(request,'vuelos/signup.html',context)
+            # lo retorna con las correciones pertinentes
+            return render(request,'vuelos/signup.html',{'form':form})
     else:
+        form = RegistroClienteform()
         return render(request,'vuelos/signup.html',{'form':form})
 
 @login_required
@@ -90,3 +90,76 @@ def reserva(request,vuelo):
 
     return redirect('/')
 
+
+def usuarios_admin(request):
+    all_clientes = Cliente.objects.all()
+    context = {"clientes":all_clientes}
+    return render(request, 'vuelos/usuariosAdmin.html',context)
+
+
+# modificar a un cliente desde el admin
+def cliente_perfil_admin(request, cliente_id):
+    # cliente cargado para la modificacion
+    clt = Cliente.objects.get(cc = cliente_id)
+
+    if request.method == 'POST':
+        #  hay una petiocion por envio para actualizar
+        
+        form = RegistroClienteform(request.POST)
+        if form.is_valid():
+            # si es valido actualizamos
+            # tomo el usuario
+            usr = clt.usuario_dj
+            usr.first_name = request.POST['nombre']
+            usr.last_name = request.POST['apellido']
+            usr.username = request.POST['username']
+            usr.email = request.POST['email']
+            #usr.password = request.POST['password2']
+            usr.set_password(request.POST['password2'])
+            # actualizo
+            usr.save()
+            #
+            return redirect('clientes:usuarios_admin')
+        elif form.errors['username']:
+            # puedo ignorar el error de mismo usuario, por ser actualizacion
+            # tomo el usuario
+            usr = clt.usuario_dj
+            usr.first_name = request.POST['nombre']
+            usr.last_name = request.POST['apellido']
+            usr.username = request.POST['username']
+            usr.email = request.POST['email']
+            #usr.password = request.POST['password2']
+            usr.set_password(request.POST['password2'])
+            # actualizo
+            usr.save()
+            #
+            return redirect('clientes:usuarios_admin')
+        else:
+            # hubo errores
+            context = { "cliente":clt, "form":form}
+            return render(request, 'vuelos/modificar_cliente_admin.html',context)
+            
+    else:
+        # se debe armar el formulario
+        # asi que se carga la información del cliente
+        form = RegistroClienteform(
+            initial={
+                'cc': clt.cc,
+                'username': clt.usuario_dj.username,
+                'nombre' :  clt.usuario_dj.first_name,
+                'apellido' :  clt.usuario_dj.last_name,
+                'email' : clt.usuario_dj.email,
+
+            })
+
+    context = { "cliente":clt, "form":form}
+    return render(request, 'vuelos/modificar_cliente_admin.html',context)
+
+def eliminar_cliente(request, cliente_id):
+    cl = Cliente.objects.get(cc=cliente_id)
+    if cl:
+        usrCl = cl.usuario_dj
+        usrCl.delete()
+
+    return redirect('clientes:usuarios_admin')
+    

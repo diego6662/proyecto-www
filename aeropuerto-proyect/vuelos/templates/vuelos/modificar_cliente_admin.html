@@ -1,0 +1,27 @@
+{% extends 'vuelos/base.html' %}
+
+{% load static %}
+{% block content %}
+<title> Usuairos - administracion </title>
+<br>
+<div class="container mt-5 mb-5" >
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-6" >
+            <div class="card px-5 py-5">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_div}}
+                    <br>
+                    <button class="btn-primaty btn btn-primary mr-4 signup" type="submit"> Modificar </button>
+                </form>
+            </div>
+        </div>
+      
+    </div>
+  
+</div>
+<br>
+<script>
+    document.getElementById("id_cc").readOnly = true;
+</script>
+{% endblock %}

@@ -69,7 +69,7 @@ class RegistroClienteform(forms.Form):
         newusername = self.cleaned_data.get("username")
         number_usrs = User.objects.filter(username=newusername).count()
         if number_usrs > 0:
-            raise ValidationError("Este nombre de usuario ya se encuentra en uso")
+            raise ValidationError("Este nombre de usuario ya se encuentra en uso",'error_user')
         return newusername
 
     def as_div(self):

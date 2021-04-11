@@ -1,0 +1,54 @@
+{% extends 'vuelos/base.html' %}
+
+{% load static %}
+{% block content %}
+<title> Usuairos - administracion </title>
+<br>
+<div class="container mt-5 mb-5" >
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-12" >
+            <div class="card">
+                <div class="card-header">
+                    <h2>CLIENTES<h2>
+                </div>
+                <br>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Identificación</th>
+                                <th scope="col">Nombre </th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Correo</th>
+                            </tr>
+                        </thead>
+                        {% for client in clientes %}
+                            <tr>
+                                <th>
+                                    <a href="{% url 'clientes:clientePerfilAdmin' client.cc %}" > {{client.cc}} </a>
+                                </th>
+                                <td>{{client.usuario_dj.first_name}}</td>
+                                <td>{{client.usuario_dj.last_name}}</td>
+                                <td>{{client.usuario_dj.username}}</td>
+                                <td>{{client.usuario_dj.email}}</td>
+                                <td>
+                                    <a href="{% url 'clientes:eliminarCliente' client.cc %}">
+                                        <button type="button" class="btn-danger btn">
+                                            Eliminar
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+      
+    </div>
+  
+</div>
+<br>
+{% endblock %}
