@@ -2849,6 +2849,7 @@ html .ui-button.ui-state-disabled:active {
 	border-radius: 2px;
 	-webkit-box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.1);
+	
 }
 
 .profile-pro-right {
