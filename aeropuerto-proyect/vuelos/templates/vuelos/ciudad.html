@@ -1,0 +1,35 @@
+{% extends 'vuelos/base.html' %}
+
+{% load static %}
+{% block content %}
+<title> Ciudades </title>
+<br>
+<div class="container mt-5 mb-5" >
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6" >
+        <div class="card px-5 py-5">
+          <div class="form-input"><br>
+            <h1> Ciudades Registradas:</h1>
+            <br>
+            <ul>
+              {% for ciudad in ciudades %}
+              <li> <a href="#">Nombre</a></li>
+              {% endfor %}
+                
+            </ul>
+            <br><br>
+            <a href="#">
+                <button type='submit' class="btn-success btn btn-primary mr-4 signup">Registrar Ciudad</button>
+            </a>
+                                      
+
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}
