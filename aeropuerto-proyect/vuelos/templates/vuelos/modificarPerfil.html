@@ -13,8 +13,25 @@
             <form enctype="multipart/form-data" method='POST'>
               {% csrf_token %}
               <br>
-	      {{form.as_p}}
-	      <br>
+
+              <label for="id_nombre" class="form-check-label">Nombre:</label>
+              <input type="text" name="nombre" maxlength="30" required="" id="id_nombre" class="form-control">
+
+              <br>
+              <label for="id_apellido"class="form-check-label">Apellido:</label>
+              <input type="text" name="apellido" maxlength="30" required="" id="id_apellido" class="form-control">
+
+              <br>
+              <label for="id_email" class="form-check-label">Email:</label>
+              <input type="email" name="email" required="" id="id_email" class="form-control">
+
+              <br>
+              <label for="id_foto" class="form-check-label">Foto de perfil:</label>
+              <input type="file" name="foto" accept="image/*" required="" id="id_foto" >
+
+
+              <br>
+              <br>
               <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Modificar</button>
               
             </form>

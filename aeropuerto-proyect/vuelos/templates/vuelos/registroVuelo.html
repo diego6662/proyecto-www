@@ -26,7 +26,7 @@
 	            {{form.id_aerolinea}}
 	            <br><br>
 
-              <label for="id_destino" class="form-check-label"> Destino: </label>
+              <label for="id_destino" class="form-check-label"> Destino: </label><br>
 	      {{form.destino}} 
 	            <br>
               <label for="id_costo" class="form-check-label"> Precio: </label>
@@ -34,7 +34,7 @@
               <input type="number" name="costo" step="any" required="" id="id_costo" class="form-control"> 
               <!-- <input type="text" name="id_costo" maxlength="30" required="" id="id_costo" class="form-control"> -->
 	      <br>
-	      <label for='id_fecha_vuelo' class="form-check-label"> Fecha del vuelo: </label>
+	      <label for='id_fecha_vuelo' class="form-check-label"> Día del vuelo: </label><br>
 	      <select id='id_fecha_vuelo' name='fecha_vuelo' class="form-check-label">
           {%for dia in dias%}
           <option value={{dia}}>{{dia}}</option>
@@ -47,7 +47,7 @@
 	<br>
 
 	      <label for='id_requisitos' class="form-check-label"> Requisitos:  </label>
-	      {{form.requisitos}}
+              <textarea name="requisitos" cols="40" rows="10" required="" id="id_requisitos" class="form-control"></textarea>
 	            <br><br>
               <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Registrar</button>
             </form>
