@@ -10,6 +10,12 @@ class Aerolinea(models.Model):
         return self.nombre
 
 
+class Ciudades(models.Model):
+    postal = models.IntegerField(primary_key=True)
+    nombre = models.CharField(max_length = 30,null=False)
+    foto = models.ImageField(upload_to='vuelos/ciudades/',null = True, blank = True)
+
+
 class Vuelo(models.Model):
     id_vuelo = models.CharField(max_length=30,primary_key=True, verbose_name="id_vuelo")
     aerolinea = models.ForeignKey(Aerolinea,on_delete=models.CASCADE, verbose_name="aerolinea")
