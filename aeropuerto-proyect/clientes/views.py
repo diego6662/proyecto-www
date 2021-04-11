@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout,authenticate
 from django.http import  HttpResponse
+from django.contrib.auth.decorators import  login_required
 from forms import Loginform,  RegistroClienteform
 from django.contrib.auth.models import  User
 from .models import Cliente,Reserva
@@ -68,6 +69,7 @@ def registrar_usuario(request):
     else:
         return render(request,'vuelos/signup.html',{'form':form})
 
+@login_required
 def perfil(request):
     usuario = Cliente.objects.get(usuario_dj = request.user)
     context = {
