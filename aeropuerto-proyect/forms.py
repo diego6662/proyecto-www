@@ -24,7 +24,8 @@ class RegistroClienteform(forms.Form):
  
     # COMPONENETES 
     cc = forms.IntegerField(required=True,label='Identificacion',help_text="Debe contener al menos 7 digitos" )
-    nombre = forms.CharField(max_length=20,required=True, label='Nombre completo')
+    nombre = forms.CharField(max_length=20,required=True, label='Nombre')
+    apellido = forms.CharField(max_length=20,required=True, label='Apellido')
     username = forms.CharField(max_length=20,required=True )
     email = forms.EmailField(max_length=30,required=True ,label='Email')
     password1 = forms.CharField(widget=forms.PasswordInput(),label="Contraseña", help_text="Debe contener al menos 8 caracteres, un caracter especial y una mayusculo")
@@ -33,6 +34,7 @@ class RegistroClienteform(forms.Form):
     # CAMBIOS EN EL CSS
     cc.widget.attrs.update({'class': 'form-control'})  
     nombre.widget.attrs.update({'class': 'form-control'})  
+    apellido.widget.attrs.update({'class': 'form-control'})  
     username.widget.attrs.update({'class': 'form-control'}) 
     email.widget.attrs.update({'class': 'form-control'}) 
     password1.widget.attrs.update({'class': 'form-control'})  
