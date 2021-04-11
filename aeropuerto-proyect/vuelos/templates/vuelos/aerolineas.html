@@ -2,7 +2,7 @@
 
 {% load static %}
 {% block content %}
-<title> Iniciar Sesion </title>
+<title> Aerolineas </title>
 <br>
 <div class="container mt-5 mb-5" >
   <div class="row d-flex align-items-center justify-content-center">
@@ -12,11 +12,9 @@
             <h1> Aerolineas Registradas:</h1>
             <br>
             <ul>
-                <a> Aviaca</a><br>
-                <a> Aviaca</a><br>
-                <a> Aviaca</a><br>
-                <a> Aviaca</a><br>
-                   
+	      {% for aerolinea in aerolineas %}
+	      <li> <a href="{% url 'vuelos:modificar-aero' aerolinea.id%}">{{aerolinea.nombre}}</a></li>
+              {% endfor %}
                 
             </ul>
             <br><br>

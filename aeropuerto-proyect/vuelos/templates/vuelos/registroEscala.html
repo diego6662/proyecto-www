@@ -37,9 +37,9 @@
                 <input type="number" name="postal_destino" required="" id="id_postal_destino" class="form-control">
               </p>
               <br>
-              <p><label for="id_fecha_salida_day" class="form-check-label">Fecha de salida:</label> 
+              <p><label for="fecha_salida" class="form-check-label">Fecha de salida:</label> 
                
-                <select id='id_fecha_vuelo' name='fecha_vuelo' class="form-check-label">
+                <select id='fecha_salida' name='fecha_salida' class="form-check-label">
                   {%for dia in dias%}
                   <option value={{dia}}>{{dia}}</option>
                   {%endfor%}
@@ -48,8 +48,8 @@
               </p>
               <br>
               <p>
-                <label for="id_fecha_llegada_day" class="form-check-label">Fecha de llegada:</label> 
-                <select id='id_fecha_vuelo' name='fecha_vuelo' class="form-check-label">
+                <label for="fecha_llegada" class="form-check-label">Fecha de llegada:</label> 
+                <select id='fecha_llegada' name='fecha_llegada' class="form-check-label">
                     {%for dia in dias%}
                     <option value={{dia}}>{{dia}}</option>
                     {%endfor%}

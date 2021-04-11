@@ -78,8 +78,8 @@ def registrar_escala(request,id):
             }
     if request.method == 'POST':
         vuelo = Vuelo.objects.get(pk = id)
-        fecha_salida = f"{request.POST['fecha_salida_year']}-{request.POST['fecha_salida_month']}-{request.POST['fecha_salida_day']}"
-        fecha_llegada = f"{request.POST['fecha_llegada_year']}-{request.POST['fecha_llegada_month']}-{request.POST['fecha_llegada_day']}"
+        fecha_salida = f"2021-04-{request.POST['fecha_salida']}"
+        fecha_llegada = f"2021-04-{request.POST['fecha_llegada']}"
         escala = Escala(vuelo=vuelo,
                 nombre_procedencia=request.POST['procedencia'],
                 cod_procedencia=request.POST['postal_procedencia'],
@@ -161,4 +161,8 @@ def editar_vuelo(request,id):
 
 
 def aerolineas(request):
-    return render(request,'vuelos/aerolineas.html')
+    aerolineas = Aerolinea.objects.all()
+    context = {
+            'aerolineas':aerolineas
+            }
+    return render(request,'vuelos/aerolineas.html',context)
