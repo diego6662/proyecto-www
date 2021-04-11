@@ -15,7 +15,8 @@ urlpatterns = [
     path('admin-vuelo-<str:id>', views.vuelo_admin, name='vuelo-admin'),
     path('eliminar-vuelo-<str:id>', views.eliminar_vuelo, name='eliminar-vuelo'),
     path('editar-vuelo-<str:id>', views.editar_vuelo, name='editar-vuelo'),
-    path('aerolineas/', views.aerolineas, name='aerolineas')
+    path('aerolineas/', views.aerolineas, name='aerolineas'),
+    path('eliminar-aerolinea-<int:id>', views.eliminar_aerolinea, name='eliminar-aerolinea'),
 
 ]
 

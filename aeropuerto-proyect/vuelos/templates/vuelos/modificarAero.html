@@ -15,10 +15,12 @@
               {% csrf_token %}
               <br>
               <label for="id_aerolinea" class="form-check-label"> Nuevo nombre para la Aerolínea: </label>
-              <!-- <input type="text" name="aerolinea" maxlength="30" required="" id="id_aerolinea" class="form-control"> -->
-	            {{form.aerolinea}}
+              <input type="text" name="aerolinea" maxlength="20" required="" id="id_aerolinea" class="form-control">
+              
               <br>
               <button type='submit' class='btn-success btn btn-primary mr-4 signup'>Modificar</button>
+              <a href="{% url 'vuelos:eliminar-aerolinea' aerolinea.id%}" style="text-decoration:none" ><button type='submit' class='btn-danger btn btn-primary mr-4 signup'>Eliminar</button></a>
+              
             </form>
           </div>
           <br>
