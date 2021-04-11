@@ -96,7 +96,8 @@ def registrar_escala(request,id):
 def modificar_aerolinea(request,id):
     form = Aerolineaform()
     context = {
-            'form':form
+            'form':form,
+            'id':id
             }
     if request.method == 'POST':
         aerolinea = Aerolinea.objects.get(pk=id)
@@ -168,8 +169,6 @@ def aerolineas(request):
     return render(request,'vuelos/aerolineas.html',context)
 
 def eliminar_aerolinea(request,id):
-    if request.method == 'POST':
-        aerolinea = Aerolinea.objects.get(pk=id)
-        aerolinea.delete()
+    aerolinea = Aerolinea.objects.get(pk=id)
+    aerolinea.delete()
     return redirect('/')
-    return render(request,'vuelos/eliminarAerolinea.html')
