@@ -44,7 +44,9 @@ def registrar_usuario(request):
                 cce = int(request.POST['cc'])
                 user = request.POST['username']
                 email = request.POST['email']
-                usuario = User.objects.create_user(username = user, email = email, password = p1)
+                nombre = request.POST['nombre']
+                apellido = request.POST['apellido']
+                usuario = User.objects.create_user(username = user, email = email, first_name = nombre, last_name=apellido,password = p1)
                 usuario.save()
             except :
                 context['error'] = 'El usuario ya existe'
