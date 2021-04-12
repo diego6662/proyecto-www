@@ -11,6 +11,7 @@ from forms import Loginform, Aerolineaform, Vueloform, Escalaform, CiudadForm
 from .models import Aerolinea, Vuelo, Escala, Ciudades
 
 from clientes.models import Cliente
+import requests
 # Create your views here.
 
 def index(request):
@@ -237,3 +238,31 @@ def ciudades(request):
             'ciudades':ciudades
             }
     return render(request,'vuelos/ciudad.html',context)
+
+def clima(request,postal):
+    #https://api.openweathermap.org/data/2.5/weather?zip=763041,co&appid=dfa2f824fc036ff5f2f9c022f70c4a7c&lang=es&units=metric
+    req = requests.get('http://api.openweathermap.org/data/2.5/weather?zip='+str(postal)+',co&appid=dfa2f824fc036ff5f2f9c022f70c4a7c&lang=es&units=metric')
+    json_object = req.json()
+
+    descripcion = json_object['weather'][0]['description']
+    tempertura = json_object['main']['temp']
+    tempertura_min = json_object['main']['temp_min']
+    tempertura_max = json_object['main']['temp_max']
+    presion = json_object['main']['pressure']
+    humedad = json_object['main']['humidity']
+    viento_velocidad =  json_object['wind']['speed']
+    viento_deg =  json_object['wind']['deg']
+    ciudad = json_object['name']
+
+    context = {
+        "descripcion":descripcion,
+        "tempertura":tempertura,
+        "tempertura_max":tempertura_max,
+        "tempertura_min":tempertura_min,
+        "presion":presion,
+        "humedad":humedad,
+        "viento_velocidad":viento_velocidad,
+        "viento_deg":viento_deg,
+        "ciudad":ciudad
+    }
+    return render(request,'vuelos/clima.html',context)  

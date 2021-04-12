@@ -20,6 +20,7 @@ urlpatterns = [
     path('registrar-ciudad', views.registrar_ciudad, name='registrar-ciudad'),
     path('modificar-ciudad-<int:id>', views.modificar_ciudad, name='modificar-ciudad'),
     path('ciudades/', views.ciudades, name='ciudades'),
+    path('clima-<int:postal>/', views.clima, name='clima'),
 
 ]
 

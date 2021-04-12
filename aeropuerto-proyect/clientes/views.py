@@ -8,6 +8,8 @@ from django.contrib.auth.models import  User
 from .models import Cliente,Reserva
 from vuelos.models import Vuelo
 from django.contrib import messages
+
+from datetime import datetime
 #
 # Create your views here.
 def login(request):
@@ -73,9 +75,11 @@ def registrar_usuario(request):
 def perfil(request):
     usuario = Cliente.objects.get(usuario_dj = request.user)
     reservas = Reserva.objects.filter(cliente = usuario)
+    dia_de_abril = datetime.now().day ## obtener el día 
     context = {
             'usuario':usuario,
-            'reservas':reservas
+            'reservas':reservas,
+            'dia_actual':dia_de_abril
             }
     return render(request, 'vuelos/perfil.html',context)
 
