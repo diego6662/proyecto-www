@@ -63,7 +63,7 @@
                                        {%  else  %} 
                                        <div class="dropdown-menu">
 
-                                          <button class="dropdown-item btn btn-secondary btn-block" onclick="window.location.href='perfil' ">Perfil</button>
+                                          <a href="{% url 'clientes:perfil'%}"><button class="dropdown-item btn btn-secondary btn-block"> Perfil </button></a>
                                           
                                        {%endif%}
                                           <a href="{% url 'clientes:logout' %}"><button class="dropdown-item btn btn-secondary btn-block"  >Salir</button></a>
