@@ -11,7 +11,7 @@ tiendaMueblesProyect/tiendaMuebles/__pycache__/
 tiendaMueblesProyect/gestionClientes/__pycache__/
 tiendaMueblesProyect/productos/__pycache__/
 db.sqlite3
-.sqlite3
+*.sqlite3
 pedidos/__pycache__/
 pedidos/migrations/__pycache__/
 *.log
