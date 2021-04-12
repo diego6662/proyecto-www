@@ -190,16 +190,18 @@ def registrar_ciudad(request):
         foto = request.FILES['foto']
         ciudad = Ciudades(postal=postal, nombre=nombre,foto=foto)
         ciudad.save()
-        return redirect('/')
+        return redirect('vuelos:ciudades')
     else:
         return render(request,'vuelos/registrarCiudad.html',context)
 
 def modificar_ciudad(request,id):
     form = CiudadForm()
+    ciud = Ciudades.objects.get(postal=id)
     context = {
             'form':form,
             'id':id
             }
+    
     if request.method == 'POST':
         ciudad = Ciudades.objects.get(pk=id)
         nombre = request.POST['ciudad']
@@ -207,9 +209,15 @@ def modificar_ciudad(request,id):
         ciudad.nombre = nombre
         ciudad.postal = postal
         ciudad.save()
-        return redirect('/')
+        return redirect('vuelos:ciudades')
     else:
-        return render(request,'vuelos/modificarCiudad.html',context)
+        form = CiudadForm(
+            initial={
+                'postal': ciud.postal,
+                'nombre': ciud.nombre,
+                'foto' :  ciud.foto,
+            })
+        return render(request,'vuelos/modificarCiudad.html',{"form":form, 'id':id})
 
 def ciudades(request):
     ciudades = Ciudades.objects.all()

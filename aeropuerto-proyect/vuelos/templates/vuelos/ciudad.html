@@ -13,18 +13,13 @@
             <br>
             <ul>
               {% for ciudad in ciudades %}
-              <li> <a href="{% url 'vuelos:modificar-ciudad' ciudad.id%}"> {{ciudad.nombre}}</a></li>
+                <li> 
+                  <a href="{% url 'vuelos:modificar-ciudad' ciudad.postal %}"> {{ciudad.nombre}}</a>
+                </li>
               {% endfor %}
-                
             </ul>
             <br><br>
-
-            
             <a href="{% url 'vuelos:registrar-ciudad'%}"><button class="btn-success btn btn-secondary ">Registrar nueva Ciudad</button></a>
-            
-                                      
-
-
           </div>
           </div>
         </div>
