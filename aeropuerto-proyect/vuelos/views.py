@@ -210,3 +210,10 @@ def modificar_ciudad(request,id):
         return redirect('/')
     else:
         return render(request,'vuelos/modificarCiudad.html',context)
+
+def ciudades(request):
+    ciudades = Ciudades.objects.all()
+    context = {
+            'ciudades':ciudades
+            }
+    return render(request,'vuelos/ciudad.html',context)
