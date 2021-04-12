@@ -89,7 +89,13 @@
 		     <h3>${{vuelo.costo}} <span> pesos </span></h3>
                      <p>Fecha de vuelo</p>
 		     <p>{{vuelo.fecha}}</p> 
-		     <a href="{% url 'clientes:reserva' vuelo.id_vuelo%}">Reservar</a>
+           {% if reservas_diponibles == 0%}
+               <a  class="btn" disabled>Reservar</a>
+               <small class="form-text text-muted">Ya utilizo todos las reservas disponibles</small>
+           {% else %}
+               <a href="{% url 'clientes:reserva' vuelo.id_vuelo%}">Reservar</a>
+           {% endif %}
+		     
                      <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>2 horas</strong> en vuelo.</h5>
                   </div>
                </div>

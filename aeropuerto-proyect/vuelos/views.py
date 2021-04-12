@@ -9,6 +9,8 @@ from django.http import  HttpResponse
 from django.contrib import messages
 from forms import Loginform, Aerolineaform, Vueloform, Escalaform, CiudadForm
 from .models import Aerolinea, Vuelo, Escala, Ciudades
+
+from clientes.models import Cliente
 # Create your views here.
 
 def index(request):
@@ -113,12 +115,19 @@ def modificar_aerolinea(request,id):
 
 @login_required
 def vista_vuelo(request,id):
+
     vuelo = Vuelo.objects.get(pk=id)
     escalas = Escala.objects.filter(vuelo = id)
     context = {
             'vuelo':vuelo,
             'escalas':escalas
             }
+    if User.is_authenticated:
+        usr = request.user
+        clt = Cliente.objects.get(usuario_dj= usr)
+        reservas_diponibles = clt.vuelos_disponibles
+        context['reservas_diponibles'] = reservas_diponibles
+
     return render(request,'vuelos/vuelo.html',context)
 
 
