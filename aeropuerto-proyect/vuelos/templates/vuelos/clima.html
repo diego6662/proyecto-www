@@ -1,0 +1,75 @@
+{% extends 'vuelos/base.html' %} {% load static %} {% block content %}
+<title>Usuairos - administracion</title>
+<br />
+<div class="container mt-5 mb-5">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-12">
+      <div class="card">
+        
+        <p>{{descripcion}}</p>
+        <p>{{tempertura}}</p>
+        <p>{{tempertura_max}}</p>
+        <p>{{tempertura_min}}</p>
+        <p>{{presion}}</p>
+        <p>{{humedad}}</p>
+        <p>{{viento_velocidad}}</p>
+        <p>{{viento_deg}}</p>
+        <p>{{ciudad}}</p>
+      
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+
+<script>
+{
+    "coord":
+    {
+        "lon":-76.2978,
+        "lat":3.9009
+    },
+    "weather":
+    [{
+        "id":802,
+        "main":"Clouds",
+        "description":"nubes dispersas",
+        "icon":"03n"
+    }],
+    "base":"stations",
+    "main":
+    {
+        "temp":19.4,
+        "feels_like":19.56,
+        "temp_min":17.78,
+        "temp_max":21,
+        "pressure":1013,
+        "humidity":83
+    },
+    "visibility":10000,
+    "wind":
+    {
+        "speed":2.06,
+        "deg":60
+    },
+    "clouds":
+    {
+        "all":40
+    },
+    "dt":1618200181,
+    "sys":
+    {
+        "type":1,
+        "id":8590,
+        "country":"CO",
+        "sunrise":1618138814,
+        "sunset":1618182697
+    },
+    "timezone":-18000,
+    "id":0,
+    "name":"Guadalajara De Buga",
+    "cod":200
+}
+</script>
+
+{% endblock %}

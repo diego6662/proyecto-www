@@ -1,91 +1,107 @@
-{% extends 'vuelos/base.html' %}
-
-{% load static %}
-<title> Mi perfil </title>
+{% extends 'vuelos/base.html' %} {% load static %}
+<title>Mi perfil</title>
 {% block content %}
-      <div class="profile-box banner-p">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="profile-b">
-                     <img src="{% static 'vuelos/images/lag-63.png' %}" alt="#" />
-                  </div>
-               </div>
-            </div>
-         </div>
+<div class="profile-box banner-p">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="profile-b">
+          <img src="{% static 'vuelos/images/lag-63.png' %}" alt="#" />
+        </div>
       </div>
-      <div class="product-profile-box">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-2 col-sm-4 pr">
-                  <div class="profile-pro-left">
-                     <div class="left-profile-box-m">
-                        <div class="pro-img">
-			                  <img src="{{usuario.image_perfil.url }}" alt="#" />
-                        </div>
-                        <div class="pof-text">
-			               <h3>{{usuario.usuario_dj.first_name}} {{usuario.usuario_dj.last_name}}
+    </div>
+  </div>
+</div>
+<div class="product-profile-box">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 col-sm-4 pr">
+        <div class="profile-pro-left">
+          <div class="left-profile-box-m">
+            <div class="pro-img">
+              <img src="{{usuario.image_perfil.url }}" alt="#" />
+            </div>
+            <div class="pof-text">
+              <h3>
+                {{usuario.usuario_dj.first_name}}
+                {{usuario.usuario_dj.last_name}}
 
-                              <div class="check-box"></div>
-                           </h3>
-                        </div>
-			<br>
-			<br>
-			<br>
-			<span> CC:{{usuario.cc}}</span>
-                        <br>
-			<span>Username:{{usuario.usuario_dj.username}} </span>
-                        <br>
-			<span>Email:{{usuario.usuario_dj.email}}</span>
-                        <br>
-                        
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-10 col-sm-8">
-                  <div class="profile-pro-right">
-                     <div class="panel with-nav-tabs panel-default">
-                        <div class="panel-heading clearfix">
-                           <ul class="nav nav-tabs pull-left">
-			     <li class="active"><a data-toggle="tab">Reservas disponibles: <span>{{usuario.vuelos_disponibles}}</span></a></li>
-                           </ul>
-                           <ul class="nav nav-tabs pull-right">
-			     <li><a href="{% url 'clientes:editar_perfil' %}" > <span> Editar perfil </span></a></li>
-                           </ul>
-                           
-                        </div>
-                        <div class="panel-body">
-                           <div class="tab-content">
-                              <div class="tab-pane fade in active" id="tab1default">
-                                 <div class="product-box-main row">
-				   {%for reserva in reservas%} 
-				   <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <img src="{{ reserva.vuelo.destino.foto.url }}" alt="#" />
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <h4>{{ reserva.vuelo.destino.nombre }}</h4>
-						<p>{{ reserva.vuelo.fecha}} </p>
-                                             </div>
-                                             <a href="#" tabindex="0">{{ reserva.vuelo.costo}}</a>
-                                          </div>
-                                          <div class="prod-btn">
-					    <a href="{% url 'clientes:cancelar_reserva' reserva.id%}"><i class="fa fa-star" aria-hidden="true"></i> Cancelar</a>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    {%endfor%}                                  
-                                 </div>
-                                 
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+                <div class="check-box"></div>
+              </h3>
             </div>
-         </div>
+            <br />
+            <br />
+            <br />
+            <span> CC:{{usuario.cc}}</span>
+            <br />
+            <span>Username:{{usuario.usuario_dj.username}} </span>
+            <br />
+            <span>Email:{{usuario.usuario_dj.email}}</span>
+            <br />
+          </div>
+        </div>
       </div>
-   {% endblock %}
+      <div class="col-md-10 col-sm-8">
+        <div class="profile-pro-right">
+          <div class="panel with-nav-tabs panel-default">
+            <div class="panel-heading clearfix">
+              <ul class="nav nav-tabs pull-left">
+                <li class="active">
+                  <a data-toggle="tab"
+                    >Reservas disponibles:
+                    <span>{{usuario.vuelos_disponibles}}</span></a
+                  >
+                </li>
+              </ul>
+              <ul class="nav nav-tabs pull-right">
+                <li>
+                  <a href="{% url 'clientes:editar_perfil' %}">
+                    <span> Editar perfil </span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="panel-body">
+              <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab1default">
+                  <div class="product-box-main row">
+                    {%for reserva in reservas%}
+                    <div class="col-md-4 col-sm-6">
+                      <div class="small-box-c">
+                        <div class="small-img-b">
+                          <img
+                            src="{{ reserva.vuelo.destino.foto.url }}"
+                            alt="#"
+                          />
+                        </div>
+                        <div class="dit-t clearfix">
+                          <div class="left-ti">
+                            <h4>{{ reserva.vuelo.destino.nombre }}</h4>
+                            <p>{{ reserva.vuelo.fecha}}</p>
+                          </div>
+                          <a href="#" tabindex="0">{{ reserva.vuelo.costo}}</a>
+                        </div>
+                        <div class="prod-btn">
+                           <a href="{% url 'clientes:cancelar_reserva' reserva.id%}"><i class="fa fa-star" aria-hidden="true"></i>
+                            Cancelar
+                           </a>
+                           {% if dia_actual == reserva.vuelo.fecha.day %}
+                              <a href="{% url 'vuelos:clima' reserva.vuelo.destino.postal %}">
+                              Clima
+                              </a>
+                           {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                    {%endfor%}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
