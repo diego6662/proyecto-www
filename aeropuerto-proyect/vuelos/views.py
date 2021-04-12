@@ -38,7 +38,7 @@ def registrar_aerolinea(request):
         nombre = request.POST['aerolinea']
         aerolinea = Aerolinea(nombre=nombre)
         aerolinea.save()
-        return redirect('/')
+        return redirect('vuelos:aerolineas')
 
     else:
         return render(request,'vuelos/registrarAero.html',context)
@@ -109,6 +109,8 @@ def modificar_aerolinea(request,id):
         return redirect('/')
     else:
         return render(request,'vuelos/modificarAero.html',context)
+
+
 @login_required
 def vista_vuelo(request,id):
     vuelo = Vuelo.objects.get(pk=id)
@@ -118,6 +120,7 @@ def vista_vuelo(request,id):
             'escalas':escalas
             }
     return render(request,'vuelos/vuelo.html',context)
+
 
 def vuelo_admin(request,id):
     vuelo = Vuelo.objects.get(pk=id)
