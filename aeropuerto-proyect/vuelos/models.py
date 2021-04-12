@@ -35,5 +35,5 @@ class Escala(models.Model):
     fecha_escala = models.DateTimeField(null=False,blank=False)
 
     def __str__(self):
-        return f'{self.vuelo},{self.nombre_procedencia}' 
+        return f'{self.vuelo},{self.ciudad_escala}' 
 

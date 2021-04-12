@@ -9,8 +9,7 @@ from django.http import  HttpResponse
 from django.contrib import messages
 from forms import Loginform, Aerolineaform, Vueloform, Escalaform, CiudadForm
 from .models import Aerolinea, Vuelo, Escala, Ciudades
-
-from clientes.models import Cliente
+from clientes.models import Cliente, Reserva
 import requests
 # Create your views here.
 
@@ -83,16 +82,11 @@ def registrar_escala(request,id):
             }
     if request.method == 'POST':
         vuelo = Vuelo.objects.get(pk = id)
-        fecha_salida = f"2021-04-{request.POST['fecha_salida']}"
-        fecha_llegada = f"2021-04-{request.POST['fecha_llegada']}"
+        fecha = f"2021-04-{request.POST['fecha_salida']}"
+        ciudad = Ciudades.objects.get(pk=int(request.POST['procedencia']))
         escala = Escala(vuelo=vuelo,
-                nombre_procedencia=request.POST['procedencia'],
-                cod_procedencia=request.POST['postal_procedencia'],
-                nombre_destino=request.POST['destino'],
-                cod_destino=request.POST['postal_destino'],
-                fecha_salida=fecha_salida,
-                fecha_llegada=fecha_llegada,
-                requisitos=request.POST['requisitos'])
+                ciudad_escala=ciudad,
+                fecha_escala=fecha,)
         escala.save()
         return redirect('vuelos:registrar-escala',id)
     else:
@@ -119,6 +113,7 @@ def vista_vuelo(request,id):
 
     vuelo = Vuelo.objects.get(pk=id)
     escalas = Escala.objects.filter(vuelo = id)
+    print(escalas)
     context = {
             'vuelo':vuelo,
             'escalas':escalas
@@ -144,6 +139,11 @@ def vuelo_admin(request,id):
 def eliminar_vuelo(request,id):
     if request.method == 'POST':
         vuelo = Vuelo.objects.get(pk=id)
+        reservas = Reserva.objects.filter(vuelo=vuelo)
+        for reserva in reservas:
+            reserva.cliente.vuelos_disponibles += 2
+            reserva.cliente.save()
+            
         vuelo.delete()
         return redirect('/')
     else:

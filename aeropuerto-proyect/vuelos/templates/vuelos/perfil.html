@@ -85,7 +85,7 @@
                            <a href="{% url 'clientes:cancelar_reserva' reserva.id%}"><i class="fa fa-star" aria-hidden="true"></i>
                             Cancelar
                            </a>
-                           {% if dia_actual == reserva.vuelo.fecha.day %}
+                           {% if dia_actual == reserva.vuelo.fecha.day  %}
                               <a href="{% url 'vuelos:clima' reserva.vuelo.destino.postal %}">
                               Clima
                               </a>

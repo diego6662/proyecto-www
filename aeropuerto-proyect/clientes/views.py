@@ -75,7 +75,7 @@ def registrar_usuario(request):
 def perfil(request):
     usuario = Cliente.objects.get(usuario_dj = request.user)
     reservas = Reserva.objects.filter(cliente = usuario)
-    dia_de_abril = datetime.now().day ## obtener el día 
+    dia_de_abril = datetime.now().day + 1 ## obtener el día 
     context = {
             'usuario':usuario,
             'reservas':reservas,
